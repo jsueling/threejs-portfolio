@@ -18,9 +18,7 @@ export default function Navbar() {
             <a>Projects</a>
           </Link>
         </NavButton>
-        <NavButton>
-          <DarkMode />
-        </NavButton>
+        <DarkMode />
       </div>
     </>
   )
