@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import DarkMode from './darkMode'
+import DarkMode from './DarkMode'
 import NavButton from './NavButton'
 
 export default function Navbar() {
