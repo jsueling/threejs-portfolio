@@ -5,9 +5,8 @@ import NavButton from './NavButton'
 
 export default function Navbar() {
   return (
-    <>
-      <div className='text-center'>Navbar</div>
-      <div className='flex justify-center'>
+    <div className='flex justify-center'>
+      <div className='w-1/3 flex justify-between'>
         <NavButton>
           <Link href='/'>
             <a>Home</a>
@@ -20,6 +19,6 @@ export default function Navbar() {
         </NavButton>
         <DarkMode />
       </div>
-    </>
+    </div>
   )
 }

@@ -6,13 +6,13 @@ import Footer from './Footer' // Contact
 
 export default function Layout({ children }) {
   return (
-  <>
+  <div className='w-7/12 m-auto'>
     <h1>Layout</h1>
     <NavBar />
     <main>
       {children}
     </main>
     <Footer />
-  </>
+  </div>
   )
 }
