@@ -6,7 +6,7 @@ import Footer from './Footer' // Contact
 
 export default function Layout({ children }) {
   return (
-  <div className='w-7/12 m-auto'>
+  <div className='sm:w-11/12 md:w-9/12 lg:w-7/12 m-auto'>
     <h1>Layout</h1>
     <NavBar />
     <main>
