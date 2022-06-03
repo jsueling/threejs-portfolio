@@ -4,9 +4,11 @@ import Footer from './Footer' // Contact
 // https://stackoverflow.com/questions/68670753/why-is-nextjs-persistent-layout-re-rendering-all-the-time
 // https://nextjs.org/docs/basic-features/layouts
 
+// https://stackoverflow.com/questions/25389181/pseudo-elements-not-visible-on-top-of-colored-background-div
+
 export default function Layout({ children }) {
   return (
-  <div className='sm:w-11/12 md:w-9/12 lg:w-7/12 m-auto bg-white dark:bg-neutral-600'> {/* fix */}
+  <div className='sm:w-11/12 md:w-9/12 lg:w-7/12 m-auto bg-red-600 dark:bg-blue-600'>
     <h1>Layout</h1>
     <NavBar />
     <main>
