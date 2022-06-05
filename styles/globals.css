@@ -7,13 +7,13 @@
 .navButton::before {
   content: '';
   position: absolute;
-  z-index: -1;
   height: 100%;
   width: 100%;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease-in-out; /* isolate transform as the transition-property, don't want to transition the transform-origin */
   border-bottom: 2px solid black;
+  pointer-events: none;
 }
 
 .navButton:hover::before {
