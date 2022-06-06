@@ -1,12 +1,14 @@
 import { useLayoutEffect, useEffect, useState } from "react"
 
+// fix warning: useLayoutEffect does nothing on the server https://stackoverflow.com/a/66580539
+
 const useDarkMode = () => {
   const [dark, setDark] = useState()
 
   // after first render, check first in localStorage, else use prefers-color-scheme
   useLayoutEffect(() => {
     const storedValue = JSON.parse(window.localStorage.getItem('darkMode'))
-    setDark( // enqueues changes to the component state https://reactjs.org/docs/react-component.html#setstate
+    setDark(
       typeof storedValue === 'boolean'
       ? storedValue
       : window.matchMedia('(prefers-color-scheme: dark)').matches // https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/matches
