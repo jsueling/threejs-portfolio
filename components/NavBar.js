@@ -3,7 +3,8 @@ import { useState } from 'react'
 
 import DarkMode from './DarkMode'
 import NavButton from './NavButton'
-import Menu from './Menu'
+import MenuIcon from './MenuIcon'
+import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false)
@@ -15,10 +16,11 @@ export default function Navbar() {
 
   return (
     <>
-      <div className='sm:hidden mobile-menu-button'>
+      {mobileMenu && <MobileMenu menuItems={menuItems} setMobileMenu={setMobileMenu}/>}
+      <div className='sm:hidden'>
         Mobile NavBar
         <button onClick={() => setMobileMenu(!mobileMenu)}>
-          <Menu />
+          <MenuIcon/>
         </button>
       </div>
       <div className='hidden sm:flex justify-center'>
