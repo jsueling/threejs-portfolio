@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
-export default function MobileMenu ({ menuItems, setMobileMenu }) {
+export default function MobileMenu ({ menuItems }) {
 
   return (
-    <div className='fixed inset-0 bg-purple-50 flex justify-center items-center'>
+    <div className='flex flex-col items-start'>
       {menuItems.map((item) =>
         <Link key={item.title} href={item.href}>
-          <a className='border-4' onClick={() => setMobileMenu((prev) => !prev)}>{item.title}</a>
+          <a className='first:mt-10 mb-10 border-2 border-green-600' >{item.title}</a>
         </Link>
       )}
     </div>

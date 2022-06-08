@@ -1,30 +1,22 @@
 import Link from 'next/link'
-import { useState } from 'react'
 
 import DarkMode from './DarkMode'
 import NavButton from './NavButton'
 import MenuIcon from './MenuIcon'
-import MobileMenu from './MobileMenu'
+import CloseIcon from './CloseIcon'
 
-export default function Navbar() {
-  const [mobileMenu, setMobileMenu] = useState(false)
-
-  const menuItems = [
-    { title: 'Home', href: '/'},
-    { title: 'Projects', href: '/projects'}
-  ]
+export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu }) {
 
   return (
     <>
-      {mobileMenu && <MobileMenu menuItems={menuItems} setMobileMenu={setMobileMenu}/>}
-      <div className='sm:hidden'>
-        Mobile NavBar
-        <button onClick={() => setMobileMenu(!mobileMenu)}>
-          <MenuIcon/>
+      <div className='sm:hidden flex items-start'>
+        <button onClick={() => setMobileMenu(!mobileMenuOpen)}>
+          {mobileMenuOpen ? <MenuIcon /> : <CloseIcon />}
         </button>
+        <DarkMode />
       </div>
       <div className='hidden sm:flex justify-center'>
-        <nav className='w-1/3 flex justify-between'>
+        <nav className='flex mx-auto justify-between'>
           {menuItems.map((item) =>
               <NavButton key={item.title}>
                 <Link href={item.href}>
