@@ -11,7 +11,7 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu }) {
     <>
       <div className='sm:hidden flex items-start'>
         <button onClick={() => setMobileMenu(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <MenuIcon /> : <CloseIcon />}
+          {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
         <DarkMode />
       </div>

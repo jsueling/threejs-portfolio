@@ -6,7 +6,7 @@ export default function DarkMode() {
   const [dark, setDark] = useDarkMode()
 
   return (
-    <button className='transition-all duration-[600ms] ease-in-out hover:rotate-[360deg]' onClick={() => setDark(!dark)}>
+    <button className='transition-all duration-[600ms] ease-in-out hover:rotate-[360deg] animate-fadeInUp' onClick={() => setDark(!dark)}>
       {dark ? <Sun /> : <Moon />}
     </button>
   )
