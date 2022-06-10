@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -12,7 +14,10 @@ module.exports = {
         }
       },
       animation: {
-        fadeInUp: 'fadeInUp 0.5s ease-in-out'
+        fadeInUp: 'fadeInUp 1s ease-in-out'
+      },
+      fontFamily: {
+        'sans': ['Roboto',  ...defaultTheme.fontFamily.sans], // https://tailwindcss.com/docs/font-family#customizing-the-default-font
       }
     },
   },
