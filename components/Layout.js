@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
@@ -6,6 +6,15 @@ import MobileMenu from './MobileMenu'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
+
+  // controlling mobileMenu state if page is resized https://stackoverflow.com/a/66828111
+  const handleResize = () => {
+    if (window.innerWidth >= 640) setMobileMenu(false)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+  }, [])
 
   const menuItems = [
     { title: 'Home', href: '/'},
