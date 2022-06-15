@@ -1,3 +1,12 @@
+import { Canvas } from "@react-three/fiber"
+
 export default function Footer() {
-  return <div>Footer</div>
+  return (
+    <>
+    Footer
+    <Canvas camera={{ position: [0, 0, 35] }}>
+
+    </Canvas>
+    </>
+  )
 }
