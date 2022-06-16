@@ -19,11 +19,11 @@ module.exports = {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       },
-      fontFamily: {
-        'sans': ['Roboto',  ...defaultTheme.fontFamily.sans], // https://tailwindcss.com/docs/font-family#customizing-the-default-font
+      fontFamily: { // https://tailwindcss.com/docs/font-family#customizing-the-default-font
+        'sans': ['Roboto',  ...defaultTheme.fontFamily.sans],
       },
-      animation: {
-        fadeIn: 'fadeInUp 0.5s ease-in-out 0s',
+      animation: { // duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name
+        fadeInStay: '0.5s ease-in-out 0s 1 normal forwards running fadeInUp',
       }
     },
   },
