@@ -6,21 +6,6 @@ import MobileMenu from './MobileMenu'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
-  const [page, setPage] = useState('Home')
-
-  // implementation for animation when element enters viewport using the IntersectionObserver API, credits to: https://codepen.io/jamesdoc/pen/qBbeOym?editors=1010
-  useEffect(() => {
-    const callback = (entries) => {
-      console.log(page);
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('animate-fadeInStay')
-      })
-    }
-    const observer = new IntersectionObserver(callback, { threshold: 0.1 })
-
-    const targets = document.querySelectorAll('.animateOnScroll')
-    targets.forEach((target) =>  observer.observe(target))
-  }, [page]) // rerun when page state changes (DOM is updated with new elements)
 
   // controlling mobileMenu state if page is resized https://stackoverflow.com/a/66828111
   const handleResize = () => {
@@ -42,14 +27,12 @@ export default function Layout({ children }) {
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
-          setPage={setPage}
           menuItems={menuItems}
         />
         {mobileMenuOpen
           ? <MobileMenu
               mobileMenuOpen={mobileMenuOpen}
               setMobileMenu={setMobileMenu}
-              setPage={setPage}
               menuItems={menuItems}
             />
           : <>

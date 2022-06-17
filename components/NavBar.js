@@ -5,7 +5,7 @@ import NavButton from './NavButton'
 import MenuIcon from './MenuIcon'
 import CloseIcon from './CloseIcon'
 
-export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, setPage }) {
+export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu }) {
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, setPa
           {menuItems.map((item) =>
               <NavButton key={item.title}>
                 <Link href={item.href}>
-                  <a onClick={() => setPage(item.title)}>{item.title}</a>
+                  <a>{item.title}</a>
                 </Link>
               </NavButton>
           )}

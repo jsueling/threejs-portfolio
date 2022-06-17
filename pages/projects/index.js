@@ -1,6 +1,10 @@
 import Head from 'next/head'
 
+import useIntersection from '../../hooks/useIntersection'
+
 export default function Projects() {
+  useIntersection()
+
   return (
     <>
       <Head>
