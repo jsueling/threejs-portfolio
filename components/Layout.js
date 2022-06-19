@@ -22,8 +22,8 @@ export default function Layout({ children }) {
   ]
 
   return (
-    <div className='w-screen h-screen bg-slate-400 dark:bg-slate-900 overflow-auto selection:bg-slate-600 selection:text-white'>
-      <div className='w-11/12 md:w-9/12 lg:w-7/12 m-auto p-10 bg-red-600 dark:bg-blue-600'>
+    <div className='w-screen h-screen bg-silver-sand dark:bg-heliotrope-gray overflow-auto selection:bg-slate-600 selection:text-white'>
+      <div className='w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10 bg-magnolia dark:bg-black-coffee'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}

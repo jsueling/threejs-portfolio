@@ -24,6 +24,17 @@ module.exports = {
       },
       animation: { // duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name
         fadeInStay: '0.5s ease-in-out 0s 1 normal forwards running fadeInUp',
+      },
+      // https://coolors.co/fcf7ff-c4cad0-878c8f-a4969b-4e414a
+      // https://coolors.co/ffffff-c4cad0-878c8f-6d5f64-43383f
+      colors: {
+        'magnolia': '#FCF7FF',
+        'silver-sand': '#C4CAD0',
+        'battleship-gray': '#878C8F',
+        'heliotrope-gray': '#A4969B',
+        'dark-liver': '#655560',
+        'black-coffee': '#43383F',
+        'old-lavender': '#6D5F64',
       }
     },
   },
