@@ -1,12 +1,17 @@
 import { Canvas } from "@react-three/fiber"
 
+import Box from './Box'
+
 export default function Footer() {
   return (
-    <>
-    Footer
-    <Canvas camera={{ position: [0, 0, 35] }}>
-
-    </Canvas>
-    </>
+    <div>
+      Footer
+      <Canvas camera={{ position: [0, 0, 35] }}>
+        <ambientLight />
+        <pointLight position={[10, 10, 10]} />
+        <Box position={[-1.2, 0, 0]} />
+        <Box position={[1.2, 0, 0]} />
+      </Canvas>
+    </div>
   )
 }
