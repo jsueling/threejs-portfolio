@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Canvas } from "@react-three/fiber"
 
+import Box from './Box'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
@@ -22,8 +24,16 @@ export default function Layout({ children }) {
   ]
 
   return (
-    <div className='w-screen h-screen bg-silver-sand dark:bg-heliotrope-gray overflow-auto selection:bg-slate-600 selection:text-white'>
-      <div className='w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10 bg-magnolia dark:bg-black-coffee'>
+    <div className='w-screen h-screen bg-transparent bg-silver-sand dark:bg-heliotrope-gray overflow-auto selection:bg-slate-600 selection:text-white'>
+      <div className='w-full h-full absolute -z-10'>
+        <Canvas camera={{ position: [0, 0, 35] }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <Box position={[-1.2, 0, 0]} />
+          <Box position={[1.2, 0, 0]} />
+        </Canvas>
+      </div>
+      <div className='bg-transparent mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10 bg-magnolia dark:bg-black-coffee'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
