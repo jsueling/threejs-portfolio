@@ -5,7 +5,7 @@ import NavButton from './NavButton'
 import MenuIcon from './MenuIcon'
 import CloseIcon from './CloseIcon'
 
-export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu }) {
+export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark, setDark }) {
 
   return (
     <>
@@ -13,7 +13,10 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu }) {
         <button className='mr-2' onClick={() => setMobileMenu(!mobileMenuOpen)}>
           {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
-        <DarkMode />
+        <DarkMode
+          dark={dark}
+          setDark={setDark}
+        />
       </div>
       <div className='hidden sm:flex justify-center mb-10'>
         <nav className='flex mx-auto justify-between'>
@@ -24,7 +27,10 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu }) {
                 </Link>
               </NavButton>
           )}
-          <DarkMode />
+          <DarkMode
+            dark={dark}
+            setDark={setDark}
+          />
         </nav>
       </div>
     </>
