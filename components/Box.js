@@ -1,6 +1,7 @@
 
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
+import { useSpring, animated, config } from '@react-spring/three'
 
 export default function Box(props) {
   // This reference will give us direct access to the mesh
@@ -10,17 +11,22 @@ export default function Box(props) {
   const [active, setActive] = useState(false)
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => (mesh.current.rotation.x += 0.01))
+  // https://docs.pmnd.rs/react-three-fiber/tutorials/using-with-react-spring
+  const { scale } = useSpring({
+    scale: active ? 3 : 1,
+    config: config.wobbly
+  })
   // Return view, these are regular three.js elements expressed in JSX
   return (
-    <mesh
+    <animated.mesh
       {...props}
       ref={mesh}
-      scale={active ? 1.5 : 1}
+      scale={scale}
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-    </mesh>
+      <meshPhongMaterial color={hovered ? 'hotpink' : 'orange'} />
+    </animated.mesh>
   )
 }
