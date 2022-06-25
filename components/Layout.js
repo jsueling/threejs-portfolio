@@ -32,8 +32,8 @@ export default function Layout({ children }) {
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
-          <Box position={[-5, 0, 0]} />
-          <Box position={[5, 0, 0]} />
+          <Box position={[-5, 0, 0]} dark={dark} />
+          <Box position={[5, 0, 0]} dark={dark} />
         </Canvas>
       </div>
       <div className='mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
@@ -52,7 +52,7 @@ export default function Layout({ children }) {
             />
           : <>
               <main>
-              {children}
+                {children}
               </main>
               <Footer />
             </>

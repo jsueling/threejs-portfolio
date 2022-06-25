@@ -13,7 +13,7 @@ export default function Box(props) {
   useFrame((state, delta) => (mesh.current.rotation.x += 0.01))
   // https://docs.pmnd.rs/react-three-fiber/tutorials/using-with-react-spring
   const { scale } = useSpring({
-    scale: active ? 3 : 1,
+    scale: props.dark ? 3 : 1,
     config: config.wobbly
   })
   // Return view, these are regular three.js elements expressed in JSX
@@ -26,7 +26,7 @@ export default function Box(props) {
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshPhongMaterial color={hovered ? 'hotpink' : 'orange'} />
+      <meshPhongMaterial color={props.dark ? 'hotpink' : 'orange'} />
     </animated.mesh>
   )
 }
