@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber"
 
 import useDarkMode from '../hooks/useDarkMode'
 import Box from './Box'
+import Sphere from './Sphere'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
@@ -26,17 +27,18 @@ export default function Layout({ children }) {
   ]
 
   return (
-    <div className='w-screen h-screen overflow-auto selection:bg-slate-600 selection:text-white'>
-      <div className='w-full h-full absolute -z-10'>
+    <div className='relative w-screen h-screen overflow-auto selection:bg-slate-600 selection:text-white'>
+      <div className='w-full h-full absolute'>
         <Canvas camera={{ position: [0, 0, 35] }}>
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
           <Box position={[-5, 0, 0]} dark={dark} />
           <Box position={[5, 0, 0]} dark={dark} />
+          <Sphere position={[2,2,2]} />
         </Canvas>
       </div>
-      <div className='mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
+      <div className='absolute mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
