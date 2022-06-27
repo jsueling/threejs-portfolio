@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
+import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Box from './Box'
 import Sphere from './Sphere'
+import Spheres from './Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
@@ -35,7 +37,7 @@ export default function Layout({ children }) {
           <pointLight position={[10, 10, 10]} />
           <Box position={[-5, 0, 0]} dark={dark} />
           <Box position={[5, 0, 0]} dark={dark} />
-          <Sphere position={[2,2,2]} />
+          <Spheres axis={new THREE.Vector3(0, -1, 0)} angle={Math.PI/200}/>
         </Canvas>
       </div>
       <div className='absolute mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
