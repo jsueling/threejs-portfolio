@@ -37,7 +37,7 @@ export default function Layout({ children }) {
           <pointLight position={[10, 10, 10]} />
           <Box position={[-5, 0, 0]} dark={dark} />
           <Box position={[5, 0, 0]} dark={dark} />
-          <Spheres axis={new THREE.Vector3(0, -1, 0)} angle={Math.PI/200}/>
+          <Spheres axis={new THREE.Vector3(0, 1, 1)} angle={Math.PI * 0.002}/>
         </Canvas>
       </div>
       <div className='absolute mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
