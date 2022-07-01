@@ -4,7 +4,6 @@ import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Box from './Box'
-import Sphere from './Sphere'
 import Spheres from './Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
@@ -44,7 +43,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div className='absolute mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
+      <div className='absolute pointer-events-none mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}

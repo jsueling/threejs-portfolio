@@ -1,22 +1,27 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { useSpring, animated, config } from '@react-spring/three'
 
 export default function Sphere(props) {
   const mesh = useRef()
-  const expandedPosition = props.basePosition.map((v) => 10*v)
+  const [active, setActive] = useState(false)
+
+  const activeFactor = active ? 5 : 0
+
+  const expandedPosition = props.basePosition.map((v) => (activeFactor + 10) * v)
 
   const { position } = useSpring({
-    position: props.dark ? props.basePosition : expandedPosition,
+    position: props.dark ? basePosition : expandedPosition,
     config: config.molasses
   })
 
   return (
     <animated.mesh
       {...props}
-      position={position}
       ref={mesh}
-      >
+      position={position}
+      onClick={(e) => setActive(!active)}
+    >
       <sphereGeometry args={[0.5, 32, 16]}/>
       <meshPhongMaterial color={'red'} />
     </animated.mesh>
