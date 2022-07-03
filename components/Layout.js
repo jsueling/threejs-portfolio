@@ -11,15 +11,21 @@ import MobileMenu from './MobileMenu'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
-  const [axis, setAxis] = useState(new THREE.Vector3(0,1,1))
+  const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode()
 
   // controlling mobileMenu state if page is resized https://stackoverflow.com/a/66828111
   const handleResize = () => {
     if (window.innerWidth >= 640) setMobileMenu(false)
   }
-  const handleScroll = () => {
-    setAxis((prev) => ({...prev, x: Math.sin(prev.x)}))
+
+  // console.log(Math.round(scroll*100)*0.01, "%"); // % of content scrolled
+
+  const handleScroll = (e) => {
+    // https://stackoverflow.com/a/29726000 https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
+    // console.log(e.srcElement.scrollTop);
+    // console.log(e.srcElement.scrollHeight- e.srcElement.clientHeight);
+    setScroll(e.srcElement.scrollTop/(e.srcElement.scrollHeight-e.srcElement.clientHeight))
   }
 
   useEffect(() => {
@@ -50,7 +56,7 @@ export default function Layout({ children }) {
           <Box position={[5, 0, 0]} dark={dark} />
           <Spheres
             dark={dark}
-            axis={axis}
+            axis={new THREE.Vector3(0,1,1)}
             angle={Math.PI * 0.0005}
           />
         </Canvas>
