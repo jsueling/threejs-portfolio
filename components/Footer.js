@@ -1,18 +1,20 @@
 export default function Footer() {
 
   const scrollTop = () => {
-    // https://stackabuse.com/how-to-scroll-to-top-in-react-with-a-button-component/
-    console.log(window);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   }
 
   return (
     <div className='pointer-events-auto'>
-      <button onClick={scrollTop}>Test</button>
-      Footer
+      <h1>
+        Footer
+      </h1>
+      <button onClick={scrollTop} className='border-2'>Back to Top</button>
     </div>
   )
 }

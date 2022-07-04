@@ -20,17 +20,13 @@ export default function Layout({ children }) {
   }
 
   // console.log(Math.round(scroll*100)*0.01, "%"); // % of content scrolled
-
   const handleScroll = (e) => {
     // https://stackoverflow.com/a/29726000 https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
-    // console.log(e.srcElement.scrollTop);
-    // console.log(e.srcElement.scrollHeight- e.srcElement.clientHeight);
     setScroll(e.srcElement.scrollTop/(e.srcElement.scrollHeight-e.srcElement.clientHeight))
   }
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
-    // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     window.addEventListener("scroll", handleScroll, { capture: true })
 
     // cleanup effects
@@ -46,7 +42,7 @@ export default function Layout({ children }) {
   ]
 
   return (
-    <div className='relative w-screen h-screen overflow-auto selection:bg-slate-600 selection:text-white'>
+    <div className='flex justify-center align-middle relative w-screen h-screen selection:bg-slate-600 selection:text-white'>
       <div className='w-full h-full absolute'>
         <Canvas camera={{ position: [0, 0, 35] }}>
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
