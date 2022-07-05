@@ -1,11 +1,15 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 import { useSpring, animated, config } from '@react-spring/three'
 
 export default function Sphere(props) {
   const mesh = useRef()
-  const [active, setActive] = useState(false)
   const [hovered, setHovered] = useState(false)
+  const [active, setActive] = useState(false)
+  
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
 
   const activeFactor = active ? 5 : 0
 

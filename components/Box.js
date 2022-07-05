@@ -1,13 +1,16 @@
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useSpring, animated, config } from '@react-spring/three'
 
 export default function Box(props) {
   const mesh = useRef()
-
   const [hovered, setHovered] = useState(false)
   const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
 
   useFrame((state, delta) => (mesh.current.rotation.x += 0.01))
 
