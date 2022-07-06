@@ -14,7 +14,7 @@ export default function Footer() {
       <h1>
         Footer
       </h1>
-      <button onClick={scrollTop} className='border-2'>Back to Top</button>
+      <button onClick={scrollTop} className='border-2 mb-10'>Back to Top</button>
     </div>
   )
 }

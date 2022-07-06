@@ -42,8 +42,8 @@ export default function Layout({ children }) {
   ]
 
   return (
-    <div className='flex justify-center align-middle relative w-screen h-screen selection:bg-slate-600 selection:text-white'>
-      <div className='w-full h-full absolute'>
+    <div className='relative selection:bg-slate-600 selection:text-white'>
+      <div className='absolute w-full h-full'>
         <Canvas camera={{ position: [0, 0, 35] }}>
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <ambientLight intensity={0.5} />
@@ -57,7 +57,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div className='absolute pointer-events-none mb-10 mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
+      <div className='inset-0 absolute pointer-events-none mt-10 w-11/12 md:w-10/12 lg:w-7/12 m-auto p-10'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
