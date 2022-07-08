@@ -14,16 +14,12 @@ export default function Layout({ children }) {
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode()
 
-  // controlling mobileMenu state if page is resized https://stackoverflow.com/a/66828111
+  // mobileMenu should close if screen is resized
   const handleResize = () => {
     if (window.innerWidth >= 640) setMobileMenu(false)
   }
 
-  // console.log(Math.round(scroll*100)*0.01, "%"); // % of content scrolled
-  const handleScroll = (e) => {
-    // https://stackoverflow.com/a/29726000 https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
-    setScroll(e.srcElement.scrollTop/(e.srcElement.scrollHeight-e.srcElement.clientHeight))
-  }
+  const handleScroll = () => setScroll(document.body.getBoundingClientRect().top)
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
@@ -48,12 +44,13 @@ export default function Layout({ children }) {
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
-          <Box position={[-5, 0, 0]} dark={dark} />
-          <Box position={[5, 0, 0]} dark={dark} />
+          <Box position={[-5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
+          <Box position={[5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
           <Spheres
             dark={dark}
             axis={new THREE.Vector3(0,1,1)}
             angle={Math.PI * 0.0005}
+            scroll={scroll}
           />
         </Canvas>
       </div>
