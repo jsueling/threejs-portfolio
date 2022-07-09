@@ -19,7 +19,10 @@ export default function Layout({ children }) {
     if (window.innerWidth >= 640) setMobileMenu(false)
   }
 
-  const handleScroll = () => setScroll(document.body.getBoundingClientRect().top)
+  const handleScroll = () => {
+    // console.log(document.body.getBoundingClientRect());
+    setScroll(document.body.getBoundingClientRect().top)
+  }
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
@@ -50,11 +53,10 @@ export default function Layout({ children }) {
             dark={dark}
             axis={new THREE.Vector3(0,1,1)}
             angle={Math.PI * 0.0005}
-            scroll={scroll}
           />
         </Canvas>
       </div>
-      <div className='absolute z-10 col-start-1 col-span-6 pointer-events-none mt-10m-auto p-10'>
+      <div className='pointer-events-none m-auto p-10'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}

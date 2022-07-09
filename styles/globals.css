@@ -20,11 +20,3 @@
   transform: scaleX(1);
   transform-origin: left;
 }
-
-html,
-body,
-body > div:first-child,
-div#__next,
-div#__next > div {
-  height: 100%;
-}
