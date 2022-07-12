@@ -56,7 +56,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div className='grid grid-flow-row auto-rows-min absolute pointer-events-none px-52 py-24'>
+      <div className='grid grid-cols-6 absolute pointer-events-none px-52 py-24'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
