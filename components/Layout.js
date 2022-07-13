@@ -40,6 +40,8 @@ export default function Layout({ children }) {
     { title: 'Projects', href: '/projects'}
   ]
 
+  // see subgrid: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid
+
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
@@ -56,7 +58,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div className='grid grid-cols-6 absolute pointer-events-none px-52 py-24'>
+      <div className='grid grid-cols-6 absolute pointer-events-none px-10 py-20 sm:px-56 sm: py:20'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
@@ -71,7 +73,7 @@ export default function Layout({ children }) {
               menuItems={menuItems}
             />
           : <>
-              <main>
+              <main className='col-span-full'>
                 {children}
               </main>
               <Footer />
