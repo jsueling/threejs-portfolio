@@ -10,11 +10,13 @@ export default function Footer() {
   }
 
   return (
-    <div className='pointer-events-auto'>
-      <h1>
-        Footer
-      </h1>
-      <button onClick={scrollTop} className='border-2 mb-10'>Back to Top</button>
+    <div className='col-span-full pointer-events-auto'>
+      <div className='flex'>
+        <h1>
+          Footer
+        </h1>
+        <button className='mx-20' onClick={scrollTop} >Back to Top</button>
+      </div>
     </div>
   )
 }

@@ -18,8 +18,8 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
           setDark={setDark}
         />
       </div>
-      <div className='hidden sm:flex mb-10'>
-        <nav className='flex justify-start'>
+      <div className='hidden sm:block mb-10'>
+        <nav className='flex'>
           {menuItems.map((item) =>
               <NavButton key={item.title}>
                 <Link href={item.href}>

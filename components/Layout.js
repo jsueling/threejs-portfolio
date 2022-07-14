@@ -44,8 +44,8 @@ export default function Layout({ children }) {
 
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
-      <div className='fixed h-full w-full'>
-        <Canvas camera={{ position: [0, 0, 35] }}>
+      <div id='main' className='fixed h-full w-full'>
+        <Canvas camera={{ position: [0, 0, 35]}}>
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
@@ -58,7 +58,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div className='grid grid-cols-6 absolute pointer-events-none px-10 py-20 sm:px-56 sm: py:20'>
+      <div className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-56'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
