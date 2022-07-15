@@ -1,30 +1,35 @@
 import { useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { animated } from '@react-spring/three'
 
 import Sphere from './Sphere'
 
-export default function Spheres(props) {
+export default function Spheres({ axis, groupAngle, dark, scroll }) {
   const numSpheres = 10
-  const angle = (2 * Math.PI) / numSpheres
+  const sphereAngle = (2 * Math.PI) / numSpheres
+  // console.log(scroll);
 
   const spherePositions = (new Array(numSpheres).fill()).map((_, i) => 
-    [Math.cos(angle*i), Math.sin(angle*i), 0]
+    [Math.cos(sphereAngle*i), Math.sin(sphereAngle*i), 0]
   )
+
+  useThree(({ camera }) => {
+    camera.position.z = 35 + 0.01 * scroll
+    // camera.rotation.x = -0.00001 * scroll
+    console.log(camera.position.z);
+  })
 
   const group = useRef()
 
-  // https://gracious-keller-98ef35.netlify.app/docs/recipes/animating-with-react-spring/
-
   useFrame((state, delta) => {
-    group.current.rotateOnAxis(props.axis, props.angle)
+    group.current.rotateOnAxis(axis, groupAngle)
   })
 
   return (
     <animated.group ref={group} >
       {spherePositions.map((v,_) =>
         <Sphere
-          dark={props.dark}
+          dark={dark}
           basePosition={v}
           key={v}
         />

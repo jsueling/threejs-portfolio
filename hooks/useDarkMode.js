@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 
 import useLayoutEffect from '../hooks/useLayoutEffect'
 
-// fix warning: useLayoutEffect does nothing on the server https://stackoverflow.com/a/66580539
-
 const useDarkMode = () => {
   const [dark, setDark] = useState()
 

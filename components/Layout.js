@@ -20,7 +20,6 @@ export default function Layout({ children }) {
   }
 
   const handleScroll = () => {
-    // console.log(document.body.getBoundingClientRect());
     setScroll(document.body.getBoundingClientRect().top)
   }
 
@@ -52,9 +51,10 @@ export default function Layout({ children }) {
           <Box position={[-5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
           <Box position={[5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
           <Spheres
-            dark={dark}
             axis={new THREE.Vector3(0,1,1)}
-            angle={Math.PI * 0.0005}
+            groupAngle={Math.PI * 0.0005}
+            dark={dark}
+            scroll={scroll}
           />
         </Canvas>
       </div>
