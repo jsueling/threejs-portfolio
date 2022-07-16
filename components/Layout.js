@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
+import { useRouter } from 'next/router'
 import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
@@ -11,8 +12,18 @@ import MobileMenu from './MobileMenu'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
-  const [scroll, setScroll] = useState(0)
+  const [scroll, setScroll] = useState()
+  const [height, setHeight] = useState()
   const [dark, setDark] = useDarkMode()
+  const { pathname } = useRouter()
+
+  // when pathname changes, get scrollable height from main content so
+  // so the animation can scale responsively to different page sizes (or content unknown)
+  useEffect(() => {
+    setHeight(document.getElementById('mainContent').clientHeight)
+  }, [pathname])
+
+  console.log(height, scroll);
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -39,8 +50,6 @@ export default function Layout({ children }) {
     { title: 'Projects', href: '/projects'}
   ]
 
-  // see subgrid: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid
-
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div id='main' className='fixed h-full w-full'>
@@ -58,7 +67,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-56'>
+      <div id='mainContent' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-56'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
