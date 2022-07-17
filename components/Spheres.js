@@ -4,10 +4,11 @@ import { animated } from '@react-spring/three'
 
 import Sphere from './Sphere'
 
-export default function Spheres({ axis, groupAngle, dark, scroll }) {
+export default function Spheres({ axis, groupAngle, dark, percentScrolled }) {
   const numSpheres = 10
   const sphereAngle = (2 * Math.PI) / numSpheres
-  // console.log(scroll);
+
+  console.log(percentScrolled);
 
   const spherePositions = (new Array(numSpheres).fill()).map((_, i) => 
     [Math.cos(sphereAngle*i), Math.sin(sphereAngle*i), 0]

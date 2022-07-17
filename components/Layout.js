@@ -13,17 +13,15 @@ import MobileMenu from './MobileMenu'
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState()
-  const [height, setHeight] = useState()
+  const [contentHeight, setContentHeight] = useState()
   const [dark, setDark] = useDarkMode()
   const { pathname } = useRouter()
 
   // when pathname changes, get scrollable height from main content so
   // so the animation can scale responsively to different page sizes (or content unknown)
   useEffect(() => {
-    setHeight(document.getElementById('mainContent').clientHeight)
+    setContentHeight(document.getElementById('mainContent').clientHeight)
   }, [pathname])
-
-  console.log(height, scroll);
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -31,7 +29,7 @@ export default function Layout({ children }) {
   }
 
   const handleScroll = () => {
-    setScroll(document.body.getBoundingClientRect().top)
+    setScroll(document.getElementById('mainContent').getBoundingClientRect().top)
   }
 
   useEffect(() => {
@@ -63,7 +61,7 @@ export default function Layout({ children }) {
             axis={new THREE.Vector3(0,1,1)}
             groupAngle={Math.PI * 0.0005}
             dark={dark}
-            scroll={scroll}
+            percentScrolled={scroll / contentHeight}
           />
         </Canvas>
       </div>
