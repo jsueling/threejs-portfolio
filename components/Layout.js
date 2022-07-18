@@ -13,7 +13,6 @@ import MobileMenu from './MobileMenu'
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState()
-  const [contentHeight, setContentHeight] = useState()
   const [dark, setDark] = useDarkMode()
   const { pathname } = useRouter()
 
@@ -29,8 +28,18 @@ export default function Layout({ children }) {
   }
 
   const handleScroll = () => {
-    setScroll(document.getElementById('mainContent').getBoundingClientRect().top)
+    const elem = document.getElementById('mainContent')
+    const DOMRect = elem.getBoundingClientRect()
+    // console.log(DOMRect);
+    // for (let key in DOMRect) {
+    //   if(typeof DOMRect[key] !== 'function') {
+    //     console.log(`${ key } : ${ DOMRect[key] }`)
+    //   }
+    // }
+    setScroll(DOMRect.top / elem.scrollHeight)
   }
+
+  console.log(scroll);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
@@ -61,7 +70,7 @@ export default function Layout({ children }) {
             axis={new THREE.Vector3(0,1,1)}
             groupAngle={Math.PI * 0.0005}
             dark={dark}
-            percentScrolled={scroll / contentHeight}
+            percentScrolled={1}
           />
         </Canvas>
       </div>
