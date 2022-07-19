@@ -26,6 +26,6 @@
   problem with bg colour with darkMode
 */
 
-#main {
-  padding-right: calc(17px - (100vw - 100%));
+#mainContent {
+  /* padding-right: calc(17px - (100vw - 100%)); */
 }

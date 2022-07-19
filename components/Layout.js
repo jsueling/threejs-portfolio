@@ -14,13 +14,6 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState()
   const [dark, setDark] = useDarkMode()
-  const { pathname } = useRouter()
-
-  // when pathname changes, get scrollable height from main content so
-  // so the animation can scale responsively to different page sizes (or content unknown)
-  useEffect(() => {
-    setContentHeight(document.getElementById('mainContent').clientHeight)
-  }, [pathname])
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -30,16 +23,8 @@ export default function Layout({ children }) {
   const handleScroll = () => {
     const elem = document.getElementById('mainContent')
     const DOMRect = elem.getBoundingClientRect()
-    // console.log(DOMRect);
-    // for (let key in DOMRect) {
-    //   if(typeof DOMRect[key] !== 'function') {
-    //     console.log(`${ key } : ${ DOMRect[key] }`)
-    //   }
-    // }
-    setScroll(DOMRect.top / elem.scrollHeight)
+    setScroll(-1*DOMRect.top / (DOMRect.height-window.innerHeight))
   }
-
-  console.log(scroll);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
@@ -70,7 +55,7 @@ export default function Layout({ children }) {
             axis={new THREE.Vector3(0,1,1)}
             groupAngle={Math.PI * 0.0005}
             dark={dark}
-            percentScrolled={1}
+            scroll={scroll}
           />
         </Canvas>
       </div>
