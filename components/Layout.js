@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Canvas } from "@react-three/fiber"
-import { useRouter } from 'next/router'
+import { Canvas, useThree } from "@react-three/fiber"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
@@ -9,6 +9,20 @@ import Spheres from './Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
+
+// https://codesandbox.io/s/orbitcontrols-react-three-fiber-9iotf?file=/src/index.js:93-101
+const CameraController = () => {
+  const { camera, gl } = useThree();
+  useEffect(
+    () => {
+      const controls = new OrbitControls(camera, gl.domElement);
+      // controls.enabled = false
+      return () => controls.dispose()
+    },
+    [camera, gl]
+  );
+  return null;
+};
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
@@ -46,8 +60,9 @@ export default function Layout({ children }) {
     <div className='selection:bg-slate-600 selection:text-white'>
       <div id='main' className='fixed h-full w-full'>
         <Canvas camera={{ position: [0, 0, 35]}}>
-          <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <ambientLight intensity={0.5} />
+          <CameraController />
+          <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <pointLight position={[10, 10, 10]} />
           <Box position={[-5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
           <Box position={[5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />

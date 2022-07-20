@@ -13,7 +13,8 @@ export default function Spheres({ axis, groupAngle, dark, scroll }) {
   )
 
   useThree(({ camera }) => {
-    camera.position.z = 35 + 0.01 * (scroll || 0)
+    // camera.rotation.z = 1 * (scroll || 0)
+    // console.log(camera.rotation);
     // camera.rotation.x = -0.00001 * scroll
     // console.log(camera.position.z);
   })
