@@ -4,8 +4,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
-import Box from './Box'
-import Spheres from './Spheres'
+import Box from './threeJS/Box'
+import Spheres from './threeJS/Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
@@ -16,7 +16,7 @@ const CameraController = () => {
   useEffect(
     () => {
       const controls = new OrbitControls(camera, gl.domElement);
-      // controls.enabled = false
+      controls.enabled = false // OrbitControls overriding scroll listener
       return () => controls.dispose()
     },
     [camera, gl]

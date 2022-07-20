@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react'
-
 import { useSpring, animated, config } from '@react-spring/three'
 
 export default function Sphere(props) {
