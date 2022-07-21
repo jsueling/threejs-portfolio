@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Canvas, useThree } from "@react-three/fiber"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { Canvas } from "@react-three/fiber"
 import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
@@ -10,24 +9,11 @@ import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
 
-// https://codesandbox.io/s/orbitcontrols-react-three-fiber-9iotf?file=/src/index.js:93-101
-const CameraController = () => {
-  const { camera, gl } = useThree();
-  useEffect(
-    () => {
-      const controls = new OrbitControls(camera, gl.domElement);
-      controls.enabled = false // OrbitControls overriding scroll listener
-      return () => controls.dispose()
-    },
-    [camera, gl]
-  );
-  return null;
-};
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
-  const [scroll, setScroll] = useState()
-  const [dark, setDark] = useDarkMode()
+  const [scroll, setScroll] = useState(0)
+  const [dark, setDark] = useDarkMode(false)
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -61,7 +47,6 @@ export default function Layout({ children }) {
       <div id='main' className='fixed h-full w-full'>
         <Canvas camera={{ position: [0, 0, 35]}}>
           <ambientLight intensity={0.5} />
-          <CameraController />
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <pointLight position={[10, 10, 10]} />
           <Box position={[-5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />

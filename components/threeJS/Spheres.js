@@ -12,17 +12,16 @@ export default function Spheres({ axis, groupAngle, dark, scroll }) {
     [Math.cos(sphereAngle*i), Math.sin(sphereAngle*i), 0]
   )
 
-  useThree(({ camera }) => {
-    // camera.rotation.z = 1 * (scroll || 0)
-    // console.log(camera.rotation);
-    // camera.rotation.x = -0.00001 * scroll
-    // console.log(camera.position.z);
-  })
+  // useThree(({ camera }) => {
+    // camera.position.x = 70 * scroll - 35
+  // })
 
   const group = useRef()
 
   useFrame((state, delta) => {
     group.current.rotateOnAxis(axis, groupAngle)
+    group.current.rotation.z = scroll * (2*Math.PI)
+    group.current.rotation.x = scroll * (Math.PI)
   })
 
   return (
