@@ -29,7 +29,7 @@ export default function Sphere(props) {
       onPointerOut={(e) => setHovered(false)}
     >
       <sphereGeometry args={[0.5, 32, 16]}/>
-      <meshPhongMaterial color={hovered ? 'blue' : 'red'} />
+      <meshPhongMaterial color={hovered ? 'blue' : props.color} />
     </animated.mesh>
   )
 }

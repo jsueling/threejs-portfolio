@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
-import * as THREE from 'three'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Box from './threeJS/Box'
@@ -8,7 +7,6 @@ import Spheres from './threeJS/Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
-
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
@@ -52,8 +50,6 @@ export default function Layout({ children }) {
           <Box position={[-5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
           <Box position={[5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
           <Spheres
-            axis={new THREE.Vector3(0,1,1)}
-            groupAngle={Math.PI * 0.0005}
             dark={dark}
             scroll={scroll}
           />

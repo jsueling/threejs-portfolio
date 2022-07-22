@@ -1,35 +1,35 @@
 import { useRef } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import { animated } from '@react-spring/three'
+import * as THREE from 'three'
 
 import Sphere from './Sphere'
 
-export default function Spheres({ axis, groupAngle, dark, scroll }) {
+export default function Spheres({ dark, scroll }) {
   const numSpheres = 10
   const sphereAngle = (2 * Math.PI) / numSpheres
+  const axis= new THREE.Vector3(0,1,1)
+  const groupAngle = Math.PI * 0.0005
 
   const spherePositions = (new Array(numSpheres).fill()).map((_, i) => 
     [Math.cos(sphereAngle*i), Math.sin(sphereAngle*i), 0]
   )
-
-  // useThree(({ camera }) => {
-    // camera.position.x = 70 * scroll - 35
-  // })
 
   const group = useRef()
 
   useFrame((state, delta) => {
     group.current.rotateOnAxis(axis, groupAngle)
     group.current.rotation.z = scroll * (2*Math.PI)
-    group.current.rotation.x = scroll * (Math.PI)
+    // group.current.rotation.x = scroll * (Math.PI)
   })
 
   return (
     <animated.group ref={group} >
-      {spherePositions.map((v,_) =>
+      {spherePositions.map((v,i) =>
         <Sphere
           dark={dark}
           basePosition={v}
+          color={`hsl(1, 100%, ${0 + i*10}%)`}
           key={v}
         />
       )}
