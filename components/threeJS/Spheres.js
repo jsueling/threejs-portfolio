@@ -19,7 +19,7 @@ export default function Spheres({ dark, scroll }) {
 
   useFrame((state, delta) => {
     group.current.rotateOnAxis(axis, groupAngle)
-    group.current.rotation.z = scroll * (2*Math.PI)
+    // group.current.rotation.z = scroll * (2*Math.PI)
     // group.current.rotation.x = scroll * (Math.PI)
   })
 
@@ -29,7 +29,6 @@ export default function Spheres({ dark, scroll }) {
         <Sphere
           dark={dark}
           basePosition={v}
-          color={`hsl(1, 100%, ${0 + i*10}%)`}
           key={v}
         />
       )}

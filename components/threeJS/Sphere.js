@@ -18,7 +18,12 @@ export default function Sphere(props) {
     position: props.dark ? props.basePosition : expandedPosition,
     config: config.molasses
   })
-
+  
+  const { color } = useSpring({
+    color: active ? 'blue' : hovered ? 'blue' : 'red',
+    config: config.molasses
+  })
+  
   return (
     <animated.mesh
       {...props}
@@ -29,7 +34,7 @@ export default function Sphere(props) {
       onPointerOut={(e) => setHovered(false)}
     >
       <sphereGeometry args={[0.5, 32, 16]}/>
-      <meshPhongMaterial color={hovered ? 'blue' : props.color} />
+      <animated.meshBasicMaterial color={color} />
     </animated.mesh>
   )
 }
