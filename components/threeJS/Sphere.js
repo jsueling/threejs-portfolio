@@ -10,20 +10,21 @@ export default function Sphere(props) {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
   }, [hovered])
 
-  const activeFactor = active ? 5 : 0
+  const activeFactor = active ? 1.5 : 1
+  const darkFactor = props.dark ? 1 : 2
 
-  const expandedPosition = props.basePosition.map((v) => (activeFactor + 10) * v)
+  const newPosition = props.basePosition.map((v) => darkFactor * activeFactor * v)
 
   const { position } = useSpring({
-    position: props.dark ? props.basePosition : expandedPosition,
+    position: newPosition,
     config: config.molasses
   })
-  
+
   const { color } = useSpring({
     color: active ? 'blue' : hovered ? 'blue' : 'red',
     config: config.molasses
   })
-  
+
   return (
     <animated.mesh
       {...props}
