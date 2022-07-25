@@ -15,13 +15,10 @@ export default function Sphere(props) {
 
   const newPosition = props.basePosition.map((v) => darkFactor * activeFactor * v)
 
-  const { position } = useSpring({
+  const { color, position, scale } = useSpring({
     position: newPosition,
-    config: config.molasses
-  })
-
-  const { color } = useSpring({
     color: active ? 'blue' : hovered ? 'blue' : 'red',
+    scale: active ? 2 : hovered ? 2 : 1,
     config: config.molasses
   })
 
@@ -33,8 +30,9 @@ export default function Sphere(props) {
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHovered(true)}
       onPointerOut={(e) => setHovered(false)}
+      scale={scale}
     >
-      <sphereGeometry args={[0.5, 32, 16]}/>
+      <sphereGeometry args={[0.5, 32, 16]} />
       <animated.meshBasicMaterial color={color} />
     </animated.mesh>
   )

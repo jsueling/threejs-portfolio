@@ -9,7 +9,7 @@ export default function Spheres({ dark, scroll }) {
   const numSpheres = 10
   const sphereAngle = (2 * Math.PI) / numSpheres
   const axis = new THREE.Vector3(0,1,1)
-  const groupAngle = Math.PI * 0.0005
+  const groupAngle = Math.PI * 0.0001
   const basePositionFactor = 10
   
   const spherePositions = (new Array(numSpheres).fill()).map((_, i) => 
