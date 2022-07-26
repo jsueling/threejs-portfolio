@@ -47,8 +47,8 @@ export default function Layout({ children }) {
           <ambientLight intensity={0.5} />
           <color attach="background" args={[dark ? "grey" : 'white' ]}/>
           <pointLight position={[10, 10, 10]} />
-          <Box position={[-5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
-          <Box position={[5, 0, 0]} rotation={[ 0.005*scroll, 0.005*scroll, 0.005*scroll ]} dark={dark} />
+          <Box position={[-5, 0, 0]} scroll={scroll} dark={dark} />
+          <Box position={[5, 0, 0]} scroll={scroll} dark={dark} />
           <Spheres
             dark={dark}
             scroll={scroll}
