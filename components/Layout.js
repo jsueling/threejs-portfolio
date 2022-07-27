@@ -45,7 +45,7 @@ export default function Layout({ children }) {
       <div id='main' className='fixed h-full w-full'>
         <Canvas camera={{ position: [0, 0, 35]}}>
           <ambientLight intensity={0.5} />
-          <color attach="background" args={[dark ? "grey" : 'white' ]}/>
+          <color attach="background" args={[dark ? "black" : 'white' ]}/>
           <pointLight position={[10, 10, 10]} />
           <Box position={[-5, 0, 0]} scroll={scroll} dark={dark} />
           <Box position={[5, 0, 0]} scroll={scroll} dark={dark} />

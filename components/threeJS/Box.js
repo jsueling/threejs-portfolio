@@ -30,7 +30,7 @@ export default function Box(props) {
       onPointerOut={(e) => setHovered(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <animated.meshPhongMaterial color={color} />
+      <animated.meshStandardMaterial color={color} />
     </animated.mesh>
   )
 }

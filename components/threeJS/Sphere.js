@@ -33,7 +33,7 @@ export default function Sphere(props) {
       scale={scale}
     >
       <sphereGeometry args={[0.5, 32, 16]} />
-      <animated.meshBasicMaterial color={color} />
+      <animated.meshStandardMaterial color={color} />
     </animated.mesh>
   )
 }

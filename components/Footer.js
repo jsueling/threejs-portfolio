@@ -10,7 +10,7 @@ export default function Footer() {
   }
 
   return (
-    <div className='col-span-full pointer-events-auto'>
+    <div className='col-span-full pointer-events-auto dark:text-white'>
       <div className='flex'>
         <h1>
           Footer

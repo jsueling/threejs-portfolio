@@ -10,7 +10,7 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
   return (
     <div className='col-span-full pointer-events-auto'>
       <div className='sm:hidden flex items-start mb-10'>
-        <button className='mr-2' onClick={() => setMobileMenu(!mobileMenuOpen)}>
+        <button className='mr-2 dark:text-white' onClick={() => setMobileMenu(!mobileMenuOpen)}>
           {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
         <DarkMode
