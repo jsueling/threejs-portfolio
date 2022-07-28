@@ -21,11 +21,6 @@
   transform-origin: left;
 }
 
-/*
-  https://km.kkrach.de/p_jumping_scrollbar_issue/
-  problem with bg colour with darkMode
-*/
-
-#mainContent {
-  /* padding-right: calc(17px - (100vw - 100%)); */
+html {
+  overflow-y: scroll;
 }

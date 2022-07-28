@@ -19,7 +19,7 @@ export default function Layout({ children }) {
   }
 
   const handleScroll = () => {
-    const elem = document.getElementById('mainContent')
+    const elem = document.getElementById('content')
     const DOMRect = elem.getBoundingClientRect()
     setScroll(-1*DOMRect.top / (DOMRect.height-window.innerHeight))
   }
@@ -42,7 +42,7 @@ export default function Layout({ children }) {
 
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
-      <div id='main' className='fixed h-full w-full'>
+      <div className='fixed h-full w-full'>
         <Canvas camera={{ position: [0, 0, 35]}}>
           <ambientLight intensity={0.5} />
           <color attach="background" args={[dark ? "black" : 'white' ]}/>
@@ -55,7 +55,7 @@ export default function Layout({ children }) {
           />
         </Canvas>
       </div>
-      <div id='mainContent' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-56'>
+      <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-56'>
         <NavBar
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenu={setMobileMenu}
