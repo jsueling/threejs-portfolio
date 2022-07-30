@@ -21,7 +21,7 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
       <div className='hidden sm:block mb-10'>
         <nav className='flex'>
           {menuItems.map((item) =>
-            <div key={item.title} className='pointer-events-auto relative mx-20 first:mx-0'>
+            <div key={item.title} className='dark:text-white relative mx-20 first:mx-0'>
               <NavButton>
                 <Link href={item.href}>
                   <a>{item.title}</a>

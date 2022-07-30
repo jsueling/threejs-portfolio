@@ -12,7 +12,7 @@
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease-in-out; /* isolate transform as the transition-property, don't want to transition the transform-origin */
-  border-bottom: 2px solid inherit;
+  border-bottom: 2px solid currentColor;
   pointer-events: none;
 }
 
