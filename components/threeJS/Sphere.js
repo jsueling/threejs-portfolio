@@ -15,12 +15,16 @@ export default function Sphere(props) {
 
   const newPosition = props.basePosition.map((v) => darkFactor * activeFactor * v)
 
-  const { color, position, scale } = useSpring({
+  const { color, position, scale, opacity } = useSpring({
     position: newPosition,
     color: active ? 'blue' : hovered ? 'blue' : 'red',
     scale: active ? 2 : hovered ? 2 : 1,
+    opacity: props.dark ? 1.0 : 0.1,
     config: config.molasses
   })
+
+  // https://threejs.org/docs/?q=mesh#api/en/materials/Material.opacity
+  // https://docs.pmnd.rs/react-three-fiber/tutorials/how-it-works
 
   return (
     <animated.mesh
@@ -31,6 +35,8 @@ export default function Sphere(props) {
       onPointerOver={(e) => setHovered(true)}
       onPointerOut={(e) => setHovered(false)}
       scale={scale}
+      transparent
+      opacity={opacity}
     >
       <sphereGeometry args={[0.5, 32, 16]} />
       <animated.meshStandardMaterial color={color} />
