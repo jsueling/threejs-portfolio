@@ -19,7 +19,7 @@ export default function Sphere(props) {
     position: newPosition,
     color: active ? 'blue' : hovered ? 'blue' : 'red',
     scale: active ? 2 : hovered ? 2 : 1,
-    opacity: props.dark ? 1.0 : 0.1,
+    opacity: props.dark ? 1.0 : 0.5,
     config: config.molasses
   })
 
@@ -35,11 +35,13 @@ export default function Sphere(props) {
       onPointerOver={(e) => setHovered(true)}
       onPointerOut={(e) => setHovered(false)}
       scale={scale}
-      transparent
-      opacity={opacity}
     >
       <sphereGeometry args={[0.5, 32, 16]} />
-      <animated.meshStandardMaterial color={color} />
+      <animated.meshStandardMaterial
+        color={color}
+        opacity={opacity}
+        transparent
+      />
     </animated.mesh>
   )
 }
