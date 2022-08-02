@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { useSpring, animated, config } from '@react-spring/three'
+import debounce from 'lodash.debounce'
 
 export default function Sphere(props) {
   const mesh = useRef()
@@ -10,6 +11,10 @@ export default function Sphere(props) {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
   }, [hovered])
 
+  const handleHoverOut = debounce((e) => {
+    // TODO
+  })
+
   const activeFactor = active ? 1.5 : 1
   const darkFactor = props.dark ? 1 : 2
 
@@ -19,7 +24,7 @@ export default function Sphere(props) {
     position: newPosition,
     color: active ? 'blue' : hovered ? 'blue' : 'red',
     scale: active ? 2 : hovered ? 2 : 1,
-    opacity: props.dark ? 1.0 : 0.5,
+    opacity: props.dark ? 1.0 : 0.3,
     config: config.molasses
   })
 
