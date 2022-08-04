@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useMemo } from 'react'
 import { useSpring, animated, config } from '@react-spring/three'
 import debounce from 'lodash.debounce'
 
@@ -13,17 +13,16 @@ export default function Sphere(props) {
   }, [hovered])
 
   const handlePointerIn = (e) => {
-    setHovered(true)
     setActive(true)
+    setHovered(true)
+    debounceSetInactive()
   }
 
-  const handlePointerOut = (e) => {
-    setHovered(false)
-    const test = debounce((e) => {
+  const debounceSetInactive = useMemo(
+    () => debounce(() => {
       setActive(false)
     }, 2000)
-    test()
-  }
+  , []);
 
   const activeFactor = active ? 1.5 : 1
   const darkFactor = props.dark ? 1 : 2
@@ -48,7 +47,7 @@ export default function Sphere(props) {
       position={position}
       onClick={(e) => setClicked(!active)}
       onPointerOver={handlePointerIn}
-      onPointerOut={handlePointerOut}
+      onPointerOut={(e) => setHovered(false)}
       scale={scale}
     >
       <sphereGeometry args={[0.5, 32, 16]} />
