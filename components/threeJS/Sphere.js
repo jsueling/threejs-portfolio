@@ -21,7 +21,7 @@ export default function Sphere(props) {
   const debounceSetInactive = useMemo(
     () => debounce(() => {
       setActive(false)
-    }, 2000)
+    }, 5000)
   , []);
 
   const activeFactor = active ? 1.5 : 1

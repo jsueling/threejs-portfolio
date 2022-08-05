@@ -18,7 +18,7 @@ export default function Box(props) {
   // https://docs.pmnd.rs/react-three-fiber/tutorials/using-with-react-spring
   const { scale, color } = useSpring({
     scale: (active ? 4 : 2) * darkFactor,
-    color: active ? 'hotpink' : hovered ? 'hotpink' : 'orange',
+    color: active ? 'green' : hovered ? 'green' : 'yellow',
     config: config.molasses
   })
 

@@ -69,12 +69,12 @@ export default function Layout({ children }) {
               setMobileMenu={setMobileMenu}
               menuItems={menuItems}
             />
-          : <>
-              <main className='col-span-full'>
+          : <div className='col-span-full'>
+              <main>
                 {children}
               </main>
               <Footer />
-            </>
+            </div>
         }
       </div>
     </div>
