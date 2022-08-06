@@ -31,8 +31,8 @@ export default function Sphere(props) {
 
   const { color, position, scale, opacity } = useSpring({
     position: newPosition,
-    color: clicked ? 'blue' : active ? 'blue' : 'red',
-    scale: clicked ? 2 : active ? 2 : 1,
+    color: active ? 'blue' : 'red',
+    scale: (active ? 2 : 1) * darkFactor,
     opacity: props.dark ? 1.0 : 0.3,
     config: config.molasses
   })
@@ -45,7 +45,7 @@ export default function Sphere(props) {
       {...props}
       ref={mesh}
       position={position}
-      onClick={(e) => setClicked(!active)}
+      onClick={(e) => setClicked(!clicked)}
       onPointerOver={handlePointerIn}
       onPointerOut={(e) => setHovered(false)}
       scale={scale}
