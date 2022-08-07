@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
 
 import useDarkMode from '../hooks/useDarkMode'
-import Box from './threeJS/Box'
+import Boxes from './threeJS/Boxes'
 import Spheres from './threeJS/Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
@@ -47,8 +47,10 @@ export default function Layout({ children }) {
           <ambientLight intensity={0.5} />
           <color attach="background" args={[dark ? "black" : 'white' ]}/>
           <pointLight position={[10, 10, 10]} />
-          <Box position={[-5, 0, 0]} scroll={scroll} dark={dark} />
-          <Box position={[5, 0, 0]} scroll={scroll} dark={dark} />
+          <Boxes
+            dark={dark}
+            scroll={scroll}
+          />
           <Spheres
             dark={dark}
             scroll={scroll}
