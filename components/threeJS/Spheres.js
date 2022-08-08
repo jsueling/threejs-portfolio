@@ -19,7 +19,14 @@ export default function Spheres({ dark, scroll }) {
   const group = useRef()
 
   useFrame((state, delta) => {
-    // using rotateOnAxis with axis=0,1,1 and setting rotation.y or .z leads to unstable animation
+    // https://medium.com/@zmommaerts/animate-a-camera-in-react-three-fiber-7398326dad5d
+
+    // console.log(group.current.position);
+
+    state.camera.lookAt(group.current.position)
+    state.camera.position.lerp(new THREE.Vector3(0, 0, 35 + (scroll*-70)), 0.1)
+    state.camera.updateProjectionMatrix()
+
     group.current.rotateOnAxis(axis, groupAngle)
     group.current.rotation.x = scroll * (Math.PI)
   })
