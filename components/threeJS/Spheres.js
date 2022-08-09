@@ -24,7 +24,7 @@ export default function Spheres({ dark, scroll }) {
     // console.log(group.current.position);
 
     state.camera.lookAt(group.current.position)
-    state.camera.position.lerp(new THREE.Vector3(0, 0, 35 + (scroll*-70)), 0.1)
+    state.camera.position.lerp(new THREE.Vector3(-10, 0, 35 + (scroll*-70)), 0.1)
     state.camera.updateProjectionMatrix()
 
     group.current.rotateOnAxis(axis, groupAngle)
