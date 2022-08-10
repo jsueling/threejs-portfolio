@@ -13,7 +13,7 @@ export default function Box(props) {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
   }, [hovered])
 
-  useFrame((state, delta) => (mesh.current.rotation.x += 0.01))
+  useFrame((state, delta) => (mesh.current.rotation.x += 0.005))
 
   const handlePointerIn = (e) => {
     setActive(true)
@@ -33,7 +33,7 @@ export default function Box(props) {
   const { scale, color, opacity } = useSpring({
     scale: (active ? 4 : 2) * darkFactor,
     color: active ? 'green' : hovered ? 'green' : 'yellow',
-    opacity: props.dark ? 1.0 : 0.3,
+    opacity: props.dark ? 0.5 : 0.25,
     config: config.molasses
   })
 

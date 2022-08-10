@@ -33,7 +33,7 @@ export default function Sphere(props) {
     position: newPosition,
     color: active ? 'blue' : 'red',
     scale: (active ? 2 : 1) * darkFactor,
-    opacity: props.dark ? 1.0 : 0.3,
+    opacity: props.dark ? 0.5 : 0.25,
     config: config.molasses
   })
 

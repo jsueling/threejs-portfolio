@@ -6,7 +6,14 @@ const useIntersection = () => {
 
       const callback = (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('animate-fadeInStay')
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('animate-fadeOutStay')
+            entry.target.classList.add('animate-fadeInStay')
+          }
+          else {
+            entry.target.classList.remove('animate-fadeInStay')
+            entry.target.classList.add('animate-fadeOutStay')
+          }
         })
       }
 
