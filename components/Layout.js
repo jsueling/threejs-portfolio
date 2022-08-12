@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -55,6 +56,10 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
+          <EffectComposer multisampling={8}>
+            <Bloom kernelSize={3} luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+            <Bloom kernelSize={KernelSize.HUGE} luminanceThreshold={0} luminanceSmoothing={0} intensity={0.5} />
+          </EffectComposer>
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
