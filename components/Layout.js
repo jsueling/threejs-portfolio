@@ -41,6 +41,14 @@ export default function Layout({ children }) {
     { title: 'Projects', href: '/projects'}
   ]
 
+  /**
+   * 1. By adding EffectComposer context is lost somehow
+   * 2. When context is lost EffectComposer throws error
+   * see https://github.com/pmndrs/react-three-fiber/discussions/1151
+   * 
+   * current EffectComposer from https://github.com/pmndrs/react-postprocessing
+   */
+
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
@@ -56,12 +64,12 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          <EffectComposer multisampling={8}>
-            <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-            <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-            <Noise opacity={0.02} />
-            <Vignette eskil={false} offset={0.1} darkness={1.1} />
-          </EffectComposer>
+        <EffectComposer>
+          <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+          <Noise opacity={0.02} />
+          <Vignette eskil={false} offset={0.1} darkness={1.1} />
+        </EffectComposer>
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
