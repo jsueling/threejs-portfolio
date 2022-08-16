@@ -33,7 +33,7 @@ export default function Box(props) {
   const { scale, color, opacity } = useSpring({
     scale: (active ? 4 : 2) * darkFactor,
     color: active ? 'green' : hovered ? 'green' : 'yellow',
-    opacity: props.dark ? 0.5 : 0.25,
+    opacity: props.dark ? 0.75 : 1,
     config: config.molasses
   })
 

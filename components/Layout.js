@@ -47,6 +47,8 @@ export default function Layout({ children }) {
    * see https://github.com/pmndrs/react-three-fiber/discussions/1151
    * 
    * current EffectComposer from https://github.com/pmndrs/react-postprocessing
+   * 
+   * Isolated error to: <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
    */
 
   return (
@@ -65,10 +67,7 @@ export default function Layout({ children }) {
             scroll={scroll}
           />
         <EffectComposer>
-          <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
           <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-          <Noise opacity={0.02} />
-          <Vignette eskil={false} offset={0.1} darkness={1.1} />
         </EffectComposer>
         </Canvas>
       </div>
