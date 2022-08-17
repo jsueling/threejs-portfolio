@@ -20,8 +20,8 @@ module.exports = {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         fadeOutDown: {
-          '100%': { opacity: '0', transform: 'translateY(0)' },
-          '0%': { opacity: '1', transform: 'translateY(-1%)' },
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(1%)' },
         },
       },
       fontFamily: { // https://tailwindcss.com/docs/font-family#customizing-the-default-font

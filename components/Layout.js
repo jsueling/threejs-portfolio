@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
+// import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -47,8 +47,6 @@ export default function Layout({ children }) {
    * see https://github.com/pmndrs/react-three-fiber/discussions/1151
    * 
    * current EffectComposer from https://github.com/pmndrs/react-postprocessing
-   * 
-   * Isolated error to: <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
    */
 
   return (
@@ -66,9 +64,12 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-        <EffectComposer>
+        {/* <EffectComposer>
           <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-        </EffectComposer>
+          <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
+          <Noise opacity={0.02} />
+          <Vignette eskil={false} offset={0.1} darkness={1.1} />
+        </EffectComposer> */}
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
