@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
-// import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
+import { EffectComposer, Pixelation } from '@react-three/postprocessing'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -13,6 +13,7 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
+  const [input, setInput] = useState(8)
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -42,11 +43,8 @@ export default function Layout({ children }) {
   ]
 
   /**
-   * 1. By adding EffectComposer context is lost somehow
-   * 2. When context is lost EffectComposer throws error
-   * see https://github.com/pmndrs/react-three-fiber/discussions/1151
-   * 
-   * current EffectComposer from https://github.com/pmndrs/react-postprocessing
+   * Crash from some effects with EffectComposer: Black screen / context is lost / throws error
+   * https://github.com/pmndrs/react-three-fiber/discussions/1151
    */
 
   return (
@@ -64,12 +62,9 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-        {/* <EffectComposer>
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-          <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-          <Noise opacity={0.02} />
-          <Vignette eskil={false} offset={0.1} darkness={1.1} />
-        </EffectComposer> */}
+        <EffectComposer>
+          <Pixelation granularity={input} />
+        </EffectComposer>
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
@@ -80,6 +75,7 @@ export default function Layout({ children }) {
           dark={dark}
           setDark={setDark}
         />
+        <input className='pointer-events-auto' onChange={(e) => setInput(e.target.value)} value={input}/>
         {mobileMenuOpen
           ? <MobileMenu
               mobileMenuOpen={mobileMenuOpen}
