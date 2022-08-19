@@ -13,7 +13,8 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
-  const [input, setInput] = useState(8)
+  const [input, setInput] = useState(0)
+  const [counter, setCounter] = useState(0)
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -25,6 +26,14 @@ export default function Layout({ children }) {
     const DOMRect = elem.getBoundingClientRect()
     setScroll(-1*DOMRect.top / (DOMRect.height-window.innerHeight))
   }
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCounter(counter+1)
+      setInput(10 + Math.sin(counter) * 10) // 5-15
+    }, 500)
+    return(() => clearInterval(intervalId))
+  }, [counter])
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
