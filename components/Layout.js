@@ -27,13 +27,13 @@ export default function Layout({ children }) {
     setScroll(-1*DOMRect.top / (DOMRect.height-window.innerHeight))
   }
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCounter(counter+1)
-      setInput(10 + Math.sin(counter) * 10) // 5-15
-    }, 500)
-    return(() => clearInterval(intervalId))
-  }, [counter])
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCounter(counter+0.01)
+  //     setInput(10 + Math.sin(counter) * 10) // 5-15
+  //   }, 5)
+  //   return(() => clearInterval(intervalId))
+  // }, [counter])
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
@@ -72,7 +72,7 @@ export default function Layout({ children }) {
             scroll={scroll}
           />
         <EffectComposer>
-          <Pixelation granularity={input} />
+          <Pixelation granularity={15-Math.round(scroll*15)} />
         </EffectComposer>
         </Canvas>
       </div>
@@ -84,7 +84,6 @@ export default function Layout({ children }) {
           dark={dark}
           setDark={setDark}
         />
-        <input className='pointer-events-auto' onChange={(e) => setInput(e.target.value)} value={input}/>
         {mobileMenuOpen
           ? <MobileMenu
               mobileMenuOpen={mobileMenuOpen}
