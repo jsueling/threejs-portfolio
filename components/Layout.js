@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
-import { EffectComposer, Pixelation } from '@react-three/postprocessing'
+import { EffectComposer, Pixelation, ChromaticAberration } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -72,7 +73,11 @@ export default function Layout({ children }) {
             scroll={scroll}
           />
         <EffectComposer>
-          <Pixelation granularity={15-Math.round(scroll*15)} />
+          {/* <Pixelation granularity={15-Math.round(scroll*15)} /> */}
+          <ChromaticAberration
+            blendFunction={BlendFunction.NORMAL} // blend mode
+            offset={[0.005, 0.0005]} // color offset
+          />
         </EffectComposer>
         </Canvas>
       </div>
