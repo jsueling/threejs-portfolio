@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
-import { EffectComposer, Pixelation, ChromaticAberration } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
+import { EffectComposer, Pixelation } from '@react-three/postprocessing'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -14,8 +13,6 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
-  const [input, setInput] = useState(0)
-  const [counter, setCounter] = useState(0)
 
   // mobileMenu should close if screen is resized
   const handleResize = () => {
@@ -27,14 +24,6 @@ export default function Layout({ children }) {
     const DOMRect = elem.getBoundingClientRect()
     setScroll(-1*DOMRect.top / (DOMRect.height-window.innerHeight))
   }
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setCounter(counter+0.01)
-  //     setInput(10 + Math.sin(counter) * 10) // 5-15
-  //   }, 5)
-  //   return(() => clearInterval(intervalId))
-  // }, [counter])
 
   useEffect(() => {
     window.addEventListener("resize", handleResize)
@@ -73,11 +62,7 @@ export default function Layout({ children }) {
             scroll={scroll}
           />
         <EffectComposer>
-          {/* <Pixelation granularity={15-Math.round(scroll*15)} /> */}
-          <ChromaticAberration
-            blendFunction={BlendFunction.NORMAL} // blend mode
-            offset={[0.005, 0.0005]} // color offset
-          />
+          <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
         </EffectComposer>
         </Canvas>
       </div>
