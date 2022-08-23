@@ -8,6 +8,7 @@ import Spheres from './threeJS/Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
+import AsciiRenderer from './threeJS/AsciiRenderer'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
@@ -61,9 +62,10 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-        <EffectComposer>
-          <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
-        </EffectComposer>
+          <AsciiRenderer invert />
+          <EffectComposer>
+            {/* <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} /> */}
+          </EffectComposer>
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
