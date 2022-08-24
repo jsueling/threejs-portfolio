@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation } from '@react-three/postprocessing'
+import { OrbitControls } from '@react-three/drei'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -62,10 +63,11 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          <AsciiRenderer invert />
+          {/* <AsciiRenderer invert /> */}
           <EffectComposer>
-            {/* <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} /> */}
+            <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
           </EffectComposer>
+          {mobileMenuOpen && <OrbitControls makeDefault /> }
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
