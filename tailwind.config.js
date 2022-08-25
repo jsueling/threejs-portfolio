@@ -43,6 +43,7 @@ module.exports = {
         'old-lavender': '#6D5F64',
       }
     },
+    ...defaultTheme
   },
   darkMode: 'class',
   plugins: [],

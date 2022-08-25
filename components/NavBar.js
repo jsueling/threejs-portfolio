@@ -3,11 +3,14 @@ import Link from 'next/link'
 import DarkMode from './DarkMode'
 import NavButton from './NavButton'
 import Hamburger from './Hamburger'
+import { screenIs } from '../utils/screenIs'
 
 export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark, setDark }) {
 
   return (
     <div className='col-span-full'>
+      <Hamburger mobileMenuOpen={mobileMenuOpen} setMobileMenu={setMobileMenu}/>
+      <DarkMode dark={dark} setDark={setDark} />
       <div className='sm:hidden flex items-start mb-10'>
         <Hamburger mobileMenuOpen={mobileMenuOpen} setMobileMenu={setMobileMenu} />
         <DarkMode dark={dark} setDark={setDark} />
