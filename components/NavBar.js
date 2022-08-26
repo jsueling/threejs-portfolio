@@ -8,21 +8,14 @@ import { screenIs } from '../utils/screenIs'
 export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark, setDark }) {
 
   return (
-    <div className='col-span-full'>
+    <div className='mb-10 flex flex-start col-span-full'>
       <Hamburger mobileMenuOpen={mobileMenuOpen} setMobileMenu={setMobileMenu}/>
-      <DarkMode dark={dark} setDark={setDark} />
-      <div className='sm:hidden flex items-start mb-10'>
-        <Hamburger mobileMenuOpen={mobileMenuOpen} setMobileMenu={setMobileMenu} />
-        <DarkMode dark={dark} setDark={setDark} />
-      </div>
-      <div className='hidden sm:block mb-10'>
-        <nav className='flex justify-between'>
-          <Hamburger mobileMenuOpen={mobileMenuOpen} setMobileMenu={setMobileMenu} />
-          {mobileMenuOpen && <DarkMode dark={dark} setDark={setDark} />}
+      <div className='hidden md:block'>
+        <nav className='flex flex-start'>
           {!mobileMenuOpen &&
             <>
               {menuItems.map((item) =>
-                  <div key={item.title} className='dark:text-white relative mx-10 first:mx-0'>
+                  <div key={item.title} className='dark:text-white relative first:ml-16 first:lg:ml-28 first:xl:ml-32 mr-16 lg:mr-28 xl:mr-32'>
                     <NavButton>
                       <Link href={item.href}>
                         <a>{item.title}</a>
@@ -30,12 +23,11 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
                     </NavButton>
                   </div>
                 )}
-              <DarkMode dark={dark} setDark={setDark} />
             </>
           }
-
         </nav>
       </div>
+      <DarkMode dark={dark} setDark={setDark} />
     </div>
   )
 }
