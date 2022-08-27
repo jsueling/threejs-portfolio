@@ -23,6 +23,10 @@ module.exports = {
           '0%': { opacity: '1', transform: 'translateY(0)' },
           '100%': { opacity: '0', transform: 'translateY(1%)' },
         },
+        fadeInLeft: {
+          '0%': { opacity: '0', marginLeft: 0 },
+          '100%': { opacity: '1' }
+        }
       },
       fontFamily: { // https://tailwindcss.com/docs/font-family#customizing-the-default-font
         'sans': ['Roboto',  ...defaultTheme.fontFamily.sans],
