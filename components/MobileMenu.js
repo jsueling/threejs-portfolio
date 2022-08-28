@@ -10,7 +10,7 @@ export default function MobileMenu ({ menuItems, mobileMenuOpen, setMobileMenu }
         <Link key={item.title} href={item.href} >
           <a
             onClick={() => setMobileMenu(!mobileMenuOpen)}
-            className={`${animateMap[index]} dark:text-white mb-5 last:mb-0 opacity-0 navButton`}
+            className={`${animateMap.staggerBounce[index]} dark:text-white mb-5 last:mb-0 opacity-0 navButton`}
           >
             {item.title}
           </a>

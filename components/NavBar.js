@@ -15,7 +15,10 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
           {!mobileMenuOpen &&
             <>
               {menuItems.map((item) =>
-                  <div key={item.title} className='dark:text-white relative animate-[fadeInLeft_1s_ease-in-out_infinite] first:ml-16 first:lg:ml-28 first:xl:ml-32 mr-16 lg:mr-28 xl:mr-32'>
+                  <div
+                    key={item.title}
+                    className='dark:text-white relative animate-[fadeInLeft_1s_ease-in-out_forwards] first:ml-16 first:lg:ml-28 first:xl:ml-32 mr-16 lg:mr-28 xl:mr-32 last:mr-14 last:lg:mr-[104px] last:xl:mr-[120px]'
+                  >
                     <NavButton>
                       <Link href={item.href}>
                         <a>{item.title}</a>

@@ -3,6 +3,8 @@
 // recommended to pre-create lookup table object instead of dynamically creating classes
 
 export const animateMap = {
-  0: 'animate-[fadeInBounce_.5s_ease-in-out_0.1s_1_normal_forwards]',
-  1: 'animate-[fadeInBounce_.5s_ease-in-out_0.3s_1_normal_forwards]',
+  staggerBounce: {
+    0: 'animate-[fadeInBounce_.5s_ease-in-out_0.1s_1_normal_forwards]',
+    1: 'animate-[fadeInBounce_.5s_ease-in-out_0.3s_1_normal_forwards]',
+  }
 }
