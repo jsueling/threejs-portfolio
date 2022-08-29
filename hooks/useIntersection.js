@@ -7,12 +7,12 @@ const useIntersection = () => {
       const callback = (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.children[0].classList.remove('animate-fadeOutStay')
-            entry.target.children[0].classList.add('animate-fadeInStay')
+            entry.target.children[0].classList.remove('animate-fadeOutDown')
+            entry.target.children[0].classList.add('animate-fadeInUp')
           }
           else {
-            entry.target.children[0].classList.remove('animate-fadeInStay')
-            entry.target.children[0].classList.add('animate-fadeOutStay')
+            entry.target.children[0].classList.remove('animate-fadeInUp')
+            entry.target.children[0].classList.add('animate-fadeOutDown')
           }
         })
       }

@@ -32,8 +32,9 @@ module.exports = {
         'sans': ['Roboto',  ...defaultTheme.fontFamily.sans],
       },
       animation: { // duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name
-        fadeInStay: '0.5s ease-in-out 0s 1 normal forwards running fadeInUp',
-        fadeOutStay: '0.5s ease-in-out 0s 1 normal forwards running fadeOutDown',
+        fadeInUp: '0.5s ease-in-out 0s 1 normal forwards running fadeInUp',
+        fadeOutDown: '0.5s ease-in-out 0s 1 normal forwards running fadeOutDown',
+        fadeInLeft: '1s ease-in-out 0s 1 normal forwards running fadeInLeft'
       },
       // https://coolors.co/fcf7ff-c4cad0-878c8f-a4969b-4e414a
       // https://coolors.co/ffffff-c4cad0-878c8f-6d5f64-43383f
