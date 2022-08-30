@@ -10,21 +10,29 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        fadeInBounce: {
+        fadeInBounceAbs: {
           '0%': { opacity: '0', transform: 'translateY(20%)' },
           '70%': { opacity: '0.7', transform: 'translateY(-5%)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '1' },
         },
-        fadeInUp: {
+        fadeInUpAbs: {
           '0%': { opacity: '0', transform: 'translateY(1%)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '1' },
         },
-        fadeOutDown: {
-          '0%': { opacity: '1', transform: 'translateY(0)' },
+        fadeOutDownAbs: {
+          '0%': { opacity: '1' },
           '100%': { opacity: '0', transform: 'translateY(1%)' },
         },
-        fadeInLeft: {
+        fadeInLeftMargin: {
           '0%': { opacity: '0', marginLeft: 0 },
+          '100%': { opacity: '1' }
+        },
+        fadeInLeftAbs: {
+          '0%': { opacity: '0', transform: 'translateX(-5%)' },
+          '100%': { opacity: '1' }
+        },
+        fadeInRightAbs: {
+          '0%': { opacity: '0', transform: 'translateX(5%)'},
           '100%': { opacity: '1' }
         }
       },
@@ -32,9 +40,9 @@ module.exports = {
         'sans': ['Roboto',  ...defaultTheme.fontFamily.sans],
       },
       animation: { // duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name
-        fadeInUp: '0.5s ease-in-out 0s 1 normal forwards running fadeInUp',
-        fadeOutDown: '0.5s ease-in-out 0s 1 normal forwards running fadeOutDown',
-        fadeInLeft: '1s ease-in-out 0s 1 normal forwards running fadeInLeft'
+        fadeInUp: '0.5s ease-in-out 0s 1 normal forwards running fadeInUpAbs',
+        fadeOutDown: '0.5s ease-in-out 0s 1 normal forwards running fadeOutDownAbs',
+        fadeInLeft: '1s ease-in-out 0s 1 normal forwards running fadeInLeftMargin'
       },
       // https://coolors.co/fcf7ff-c4cad0-878c8f-a4969b-4e414a
       // https://coolors.co/ffffff-c4cad0-878c8f-6d5f64-43383f

@@ -4,7 +4,7 @@
 
 export const animateMap = {
   staggerBounce: {
-    0: 'animate-[fadeInBounce_.5s_ease-in-out_0.1s_1_normal_forwards]',
-    1: 'animate-[fadeInBounce_.5s_ease-in-out_0.3s_1_normal_forwards]',
+    0: 'animate-[fadeInBounceAbs_.5s_ease-in-out_0.1s_1_normal_forwards]',
+    1: 'animate-[fadeInBounceAbs_.5s_ease-in-out_0.3s_1_normal_forwards]',
   }
 }

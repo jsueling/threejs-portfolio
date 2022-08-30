@@ -3,7 +3,6 @@ import Link from 'next/link'
 import DarkMode from './DarkMode'
 import NavButton from './NavButton'
 import Hamburger from './Hamburger'
-import { screenIs } from '../utils/screenIs'
 
 export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark, setDark }) {
 
@@ -30,7 +29,7 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
           }
         </nav>
       </div>
-      <DarkMode dark={dark} setDark={setDark} />
+      <DarkMode mobileMenuOpen={mobileMenuOpen} dark={dark} setDark={setDark} />
     </div>
   )
 }
