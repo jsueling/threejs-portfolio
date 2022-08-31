@@ -28,11 +28,11 @@ module.exports = {
           '100%': { opacity: '1' }
         },
         fadeInLeftAbs: {
-          '0%': { opacity: '0', transform: 'translateX(-5%)' },
+          '0%': { opacity: '0', transform: 'translateX(-200%)' },
           '100%': { opacity: '1' }
         },
         fadeInRightAbs: {
-          '0%': { opacity: '0', transform: 'translateX(5%)'},
+          '0%': { opacity: '0', transform: 'translateX(50%)'},
           '100%': { opacity: '1' }
         }
       },
@@ -42,7 +42,9 @@ module.exports = {
       animation: { // duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name
         fadeInUp: '0.5s ease-in-out 0s 1 normal forwards running fadeInUpAbs',
         fadeOutDown: '0.5s ease-in-out 0s 1 normal forwards running fadeOutDownAbs',
-        fadeInLeft: '1s ease-in-out 0s 1 normal forwards running fadeInLeftMargin'
+        navBar: '1s ease-in-out 0s 1 normal forwards running fadeInLeftMargin',
+        darkModeLeft: '.5s ease-in-out 0s 1 normal forwards running fadeInLeftAbs',
+        darkModeRight: '.5s ease-in-out 0s 1 normal forwards running fadeInRightAbs',
       },
       // https://coolors.co/fcf7ff-c4cad0-878c8f-a4969b-4e414a
       // https://coolors.co/ffffff-c4cad0-878c8f-6d5f64-43383f
