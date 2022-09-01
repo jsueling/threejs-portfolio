@@ -3,17 +3,19 @@ import Moon from './Moon'
 import { screenIs } from '../utils/screenIs'
 
 export default function DarkMode({ mobileMenuOpen, dark, setDark }) {
-
+  console.log('mobileMenuOpen', mobileMenuOpen);
   return (
     <>
       {mobileMenuOpen || !screenIs('md')
       ? 
       <div className='ml-2 flex animate-darkModeRight'>
         <SunMoon dark={dark} setDark={setDark} />
+        right
       </div>
       :
       <div className='ml-2 flex animate-darkModeLeft'>
         <SunMoon dark={dark} setDark={setDark} />
+        left
       </div>}
     </>
   )
