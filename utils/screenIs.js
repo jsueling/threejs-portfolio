@@ -16,9 +16,7 @@
   const matches = Object.entries(screens).reduce((results, [name, size]) => {
     const mediaQuery = typeof size === 'string' ? `(min-width: ${size})` : `(max-width: ${size.max})`;
 
-    if (typeof window !== "undefined") {
-      results[name] = window.matchMedia(mediaQuery).matches;
-    }
+    results[name] = window.matchMedia(mediaQuery).matches;
 
     return results;
   }, {});

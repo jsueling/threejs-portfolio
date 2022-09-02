@@ -1,33 +1,30 @@
+import { useEffect } from 'react'
+
 import Sun from './Sun'
 import Moon from './Moon'
 import { screenIs } from '../utils/screenIs'
 
 export default function DarkMode({ mobileMenuOpen, dark, setDark }) {
-  console.log('mobileMenuOpen', mobileMenuOpen);
-  return (
-    <>
-      {mobileMenuOpen || !screenIs('md')
-      ? 
-      <div className='ml-2 flex animate-darkModeRight'>
-        <SunMoon dark={dark} setDark={setDark} />
-        right
-      </div>
-      :
-      <div className='ml-2 flex animate-darkModeLeft'>
-        <SunMoon dark={dark} setDark={setDark} />
-        left
-      </div>}
-    </>
-  )
-}
 
-function SunMoon({ dark, setDark }) {
+  useEffect(() => {
+    const target = document.querySelector('.sunMoon')
+    if (mobileMenuOpen || !screenIs('md')) {
+      target.classList.add('animate-darkModeRight')
+      target.classList.remove('animate-darkModeLeft')
+    } else {
+      target.classList.add('animate-darkModeLeft')
+      target.classList.remove('animate-darkModeRight')
+    }
+  })
+
   return (
-    <button
-      className='transition-all duration-[600ms] ease-in-out hover:rotate-[360deg] pointer-events-auto dark:text-white'
-      onClick={() => setDark(!dark)}
-    >
-    {dark ? <Sun /> : <Moon />}
-  </button>
+    <div className='sunMoon ml-2 flex'>
+      <button
+        className='transition-all duration-[600ms] ease-in-out hover:rotate-[360deg] pointer-events-auto dark:text-white'
+        onClick={() => setDark(!dark)}
+      >
+        {dark ? <Sun /> : <Moon />}
+      </button>
+    </div>
   )
 }
