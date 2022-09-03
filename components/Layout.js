@@ -10,6 +10,7 @@ import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
 import AsciiRenderer from './threeJS/AsciiRenderer'
+import Rig from './threeJS/Rig'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
@@ -67,7 +68,8 @@ export default function Layout({ children }) {
           <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
           </EffectComposer>
-          {mobileMenuOpen && <OrbitControls makeDefault /> }
+          {/* {mobileMenuOpen && <OrbitControls makeDefault /> } */}
+          <Rig />
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
