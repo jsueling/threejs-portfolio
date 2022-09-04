@@ -52,7 +52,7 @@ export default function Layout({ children }) {
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
-        <Canvas camera={{ position: [-10, 0, 35]}}>
+        <Canvas camera={{ position: [0, 0, 35]}}>
           <ambientLight intensity={0.5} />
           <color attach="background" args={[dark ? "black" : 'white' ]}/>
           <pointLight position={[10, 10, 10]} />
@@ -65,11 +65,11 @@ export default function Layout({ children }) {
             scroll={scroll}
           />
           {/* <AsciiRenderer invert /> */}
-          <EffectComposer>
+          {/* <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
-          </EffectComposer>
+          </EffectComposer> */}
           {/* {mobileMenuOpen && <OrbitControls makeDefault /> } */}
-          <Rig />
+          {/* <Rig /> */}
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>

@@ -13,7 +13,7 @@ export default function Box(props) {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
   }, [hovered])
 
-  useFrame((state, delta) => (mesh.current.rotation.x += 0.005))
+  // useFrame((state, delta) => (mesh.current.rotation.z += 0.001))
 
   const handlePointerIn = (e) => {
     setActive(true)
