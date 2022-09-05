@@ -21,16 +21,14 @@ export default function Spheres({ dark, scroll }) {
   useFrame((state, delta) => {
     // https://medium.com/@zmommaerts/animate-a-camera-in-react-three-fiber-7398326dad5d
 
-    // console.log(group.current.position);
-    
     // scroll 0 => 2Pi
-    const angle = scroll * Math.PI
-    state.camera.lookAt(group.current.position)
-    state.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
-    state.camera.updateProjectionMatrix()
+    // const angle = scroll * Math.PI
+    // state.camera.lookAt(group.current.position)
+    // state.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
+    // state.camera.updateProjectionMatrix()
 
-    // group.current.rotateOnAxis(axis, groupAngle)
-    // group.current.rotation.x = scroll * (Math.PI)
+    group.current.rotateOnAxis(axis, groupAngle)
+    group.current.rotation.x = scroll * (Math.PI)
   })
 
   return (

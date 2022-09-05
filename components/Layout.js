@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation } from '@react-three/postprocessing'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, ArcballControls } from '@react-three/drei'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -44,11 +44,6 @@ export default function Layout({ children }) {
     { title: 'Projects', href: '/projects'}
   ]
 
-  /**
-   * Crash from some effects with EffectComposer: Black screen / context is lost / throws error
-   * https://github.com/pmndrs/react-three-fiber/discussions/1151
-   */
-
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
@@ -64,6 +59,7 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
+          <ArcballControls dampingFactor={0.1} enabled={true} enableGrid={true}/>
           {/* <AsciiRenderer invert /> */}
           {/* <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
