@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation } from '@react-three/postprocessing'
-import { OrbitControls, ArcballControls } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -9,6 +9,7 @@ import Spheres from './threeJS/Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
+import Arcball from './threeJS/Arcball'
 import AsciiRenderer from './threeJS/AsciiRenderer'
 import Rig from './threeJS/Rig'
 
@@ -59,7 +60,7 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          <ArcballControls dampingFactor={0.1} enabled={true} enableGrid={true}/>
+          <Arcball scroll={scroll} enabled={mobileMenuOpen} />
           {/* <AsciiRenderer invert /> */}
           {/* <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
