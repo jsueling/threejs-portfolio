@@ -4,6 +4,12 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 export default function Arcball({ scroll, enabled }) {
+  
+  // camera perspective flipping when rotating threejs
+  // https://stackoverflow.com/questions/17696587/three-js-camera-rotation-issue
+  // https://github.com/mrdoob/three.js/blob/master/src/core/Object3D.js#L260
+
+  // https://discourse.threejs.org/t/solved-lookat-flips-cam-rotation-180-degrees-how-do-i-remove-this/2066
 
   const controls = useRef()
   const origin = new THREE.Vector3(0,0,0)
