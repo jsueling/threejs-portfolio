@@ -11,13 +11,20 @@ export default function Arcball({ scroll, enabled }) {
 
   // https://discourse.threejs.org/t/solved-lookat-flips-cam-rotation-180-degrees-how-do-i-remove-this/2066
 
+  // https://threejs.org/docs/#api/en/math/Spherical
+  // https://threejs.org/docs/#api/en/math/Quaternion
+
   const controls = useRef()
   const origin = new THREE.Vector3(0,0,0)
   useFrame((state,delta) => {
     if (!enabled) {
       const angle = scroll * Math.PI * 2
-      controls.current.camera.lookAt(origin)
-      controls.current.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
+
+      controls.current.camera.quaternion.copy(new THREE.Spherical(35, Math.PI/2 - angle, 0), 0.1);
+      console.log(controls.current.camera.position);
+
+      // controls.current.camera.lookAt(origin)
+      // controls.current.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
       controls.current.camera.updateProjectionMatrix()
     }
   })
