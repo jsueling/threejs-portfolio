@@ -2,6 +2,7 @@ import {  ArcballControls, OrbitControls } from '@react-three/drei'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { Vector3 } from 'three'
 
 export default function Arcball({ scroll, enabled }) {
   
@@ -22,21 +23,24 @@ export default function Arcball({ scroll, enabled }) {
   // gimbal lock:
   // https://www.youtube.com/watch?v=zc8b2Jo7mno
 
+  // when using xyz pos to describe camera pos looking at a single point, it gets gimbal locked crossing an axis (y in this case).
+  // when aligned with this axis the camera pos describes 2 different camera views
+
   const controls = useRef()
   const origin = new THREE.Vector3(0,0,0)
-  // useFrame((state,delta) => {
-  //   if (!enabled) {
-  //     const angle = scroll * Math.PI * 2
+  useFrame((state,delta) => {
+    if (!enabled) {
+      const angle = scroll * Math.PI * 2
 
-  //     controls.current.camera.quaternion.copy(new THREE.Spherical(35, Math.PI/2 - angle, 0), 0.1);
-  //     console.log(controls.current.camera.position);
+      controls.current.camera.quaternion.slerp(new THREE.Quaternion(0,0,0,0), 0.1);
+      controls.current.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
+      controls.current.camera.updateProjectionMatrix()
 
+      // controls.current.camera.lookAt(new Vector3(0,-35*Math.sin(angle), 35*Math.cos(angle)))
       // controls.current.camera.lookAt(origin)
-      // controls.current.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
-  //     controls.current.camera.updateProjectionMatrix()
-  //   }
-  // })
-  // console.log(controls.current.target);
+    }
+  })
+
   return (
     <>
       <ArcballControls ref={controls} dampingFactor={0.1} enabled={enabled}/>
