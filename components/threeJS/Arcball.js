@@ -2,7 +2,6 @@ import {  ArcballControls, OrbitControls } from '@react-three/drei'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import { Vector3 } from 'three'
 
 export default function Arcball({ scroll, enabled }) {
   
@@ -19,6 +18,7 @@ export default function Arcball({ scroll, enabled }) {
   
   // example use:
   // https://github.com/simondevyoutube/ThreeJS_Tutorial_LoadingModels/blob/04d5161a45c422ee14a94b6d05de0dcbfb7af1ea/main.js#L233
+  // https://stackoverflow.com/questions/6280586/how-does-this-quaternion-rotation-code-work
 
   // gimbal lock:
   // https://www.youtube.com/watch?v=zc8b2Jo7mno
@@ -32,9 +32,9 @@ export default function Arcball({ scroll, enabled }) {
     if (!enabled) {
       const angle = scroll * Math.PI * 2
 
-      controls.current.camera.quaternion.slerp(new THREE.Quaternion(0,0,0,0), 0.1);
-      controls.current.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.1)
-      controls.current.camera.updateProjectionMatrix()
+      state.camera.quaternion.slerp(new THREE.Quaternion(Math.cos(angle/2),0,0,Math.sin(angle/2)), 0.5)
+      state.camera.position.lerp(new THREE.Vector3(0, 35*Math.sin(angle), 35*Math.cos(angle)), 0.5)
+      state.camera.updateProjectionMatrix()
 
       // controls.current.camera.lookAt(new Vector3(0,-35*Math.sin(angle), 35*Math.cos(angle)))
       // controls.current.camera.lookAt(origin)
