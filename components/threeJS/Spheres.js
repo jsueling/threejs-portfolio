@@ -28,7 +28,6 @@ export default function Spheres({ dark, scroll }) {
     // state.camera.updateProjectionMatrix()
 
     group.current.rotateOnAxis(axis, groupAngle)
-    group.current.rotation.x = scroll * (Math.PI)
   })
 
   return (
