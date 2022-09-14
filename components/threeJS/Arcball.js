@@ -43,9 +43,9 @@ export default function Arcball({ scroll, enabled }) {
 
   return (
     <>
-      <ArcballControls ref={controls} dampingFactor={0.1} enabled={enabled}/>
+      <ArcballControls ref={controls} dampingFactor={1} enabled={enabled}/>
       {/* <OrbitControls ref={controls} /> */}
-      <axesHelper args={[20]} />
+      <axesHelper />
     </>
   )
 }
