@@ -9,7 +9,7 @@ import Spheres from './threeJS/Spheres'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
-import Arcball from './threeJS/Arcball'
+import CameraControls from './threeJS/CameraControls'
 import AsciiRenderer from './threeJS/AsciiRenderer'
 import Rig from './threeJS/Rig'
 
@@ -60,7 +60,7 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          <Arcball scroll={scroll} enabled={mobileMenuOpen} />
+          <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
           {/* <AsciiRenderer invert /> */}
           {/* <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
