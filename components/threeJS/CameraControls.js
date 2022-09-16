@@ -41,6 +41,8 @@ export default function Arcball({ scroll, enabled }) {
     }
   })
 
+  // TODO, when enabling or disabling ArcballControls, smoothly transition/lerp orientation and position
+  // TODO maintain orientation/position between having ArcaBallControls enabled and disabled i.e. single source of truth
   return (
     <>
       <ArcballControls ref={controls} dampingFactor={1} enabled={enabled}/>

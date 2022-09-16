@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation } from '@react-three/postprocessing'
-import { OrbitControls } from '@react-three/drei'
+import { Stars } from '@react-three/drei'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
@@ -62,10 +62,11 @@ export default function Layout({ children }) {
           />
           <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
           {/* <AsciiRenderer invert /> */}
-          {/* <EffectComposer>
+          {/* TODO light mode dark stars */}
+          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+          <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
-          </EffectComposer> */}
-          {/* {mobileMenuOpen && <OrbitControls makeDefault /> } */}
+          </EffectComposer>
           {/* <Rig /> */}
         </Canvas>
       </div>
