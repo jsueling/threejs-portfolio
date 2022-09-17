@@ -12,31 +12,23 @@ import MobileMenu from './MobileMenu'
 import CameraControls from './threeJS/CameraControls'
 import AsciiRenderer from './threeJS/AsciiRenderer'
 import Rig from './threeJS/Rig'
+import handleResize from '../utils/handleResize'
+import handleScroll from '../utils/handleScroll'
+import Light from './threeJS/Light'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
 
-  // mobileMenu should close if screen is resized
-  const handleResize = () => {
-    if (window.innerWidth >= 640) setMobileMenu(false)
-  }
-
-  const handleScroll = () => {
-    const elem = document.getElementById('content')
-    const DOMRect = elem.getBoundingClientRect()
-    setScroll(-1*DOMRect.top / (DOMRect.height-window.innerHeight))
-  }
-
   useEffect(() => {
-    window.addEventListener("resize", handleResize)
-    window.addEventListener("scroll", handleScroll, { capture: true })
+    window.addEventListener("resize", () => handleResize(setMobileMenu))
+    window.addEventListener("scroll", () => handleScroll(setScroll), { capture: true })
 
     // cleanup effects
     return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', () => handleResize(setMobileMenu))
+      window.removeEventListener('scroll', () => handleScroll(setScroll))
     }
   }, [])
 
@@ -49,9 +41,8 @@ export default function Layout({ children }) {
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
         <Canvas camera={{ position: [0, 0, 35]}}>
-          <ambientLight intensity={0.5} />
           <color attach="background" args={[dark ? "black" : 'white' ]}/>
-          <pointLight position={[10, 10, 10]} />
+          <Light />
           <Boxes
             dark={dark}
             scroll={scroll}
@@ -64,9 +55,9 @@ export default function Layout({ children }) {
           {/* <AsciiRenderer invert /> */}
           {/* TODO light mode dark stars */}
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-          <EffectComposer>
+          {/* <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
-          </EffectComposer>
+          </EffectComposer> */}
           {/* <Rig /> */}
         </Canvas>
       </div>
