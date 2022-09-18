@@ -31,9 +31,10 @@ export default function Sphere(props) {
 
   const { color, position, scale, opacity } = useSpring({
     position: newPosition,
-    color: active ? 'blue' : 'red',
+    // color: active ? 'blue' : 'red',
+    color: 'white',
     scale: (active ? 2 : 1) * darkFactor,
-    opacity: props.dark ? 0.75 : 1,
+    opacity: props.dark ? 1 : 0.4,
     config: config.molasses
   })
 
