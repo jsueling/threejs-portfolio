@@ -54,7 +54,8 @@ export default function Layout({ children }) {
           <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
           {/* <AsciiRenderer invert /> */}
           {/* TODO light mode dark stars */}
-          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+          {/* https://github.com/pmndrs/drei#stars */}
+          <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
           {/* <EffectComposer>
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
           </EffectComposer> */}
