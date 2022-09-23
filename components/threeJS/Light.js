@@ -10,7 +10,7 @@ export default function Light({ dark }) {
   const orbitLight = useRef()
   const group = useRef()
   useHelper(pointLight, PointLightHelper, 0.5, 'blue')
-  useHelper(hemiLight, HemisphereLightHelper, 0.5, 'red')
+  // useHelper(hemiLight, HemisphereLightHelper, 0.5, 'red')
   useHelper(orbitLight, PointLightHelper, 0.5, 'pink')
 
   useFrame((state, delta) => {
@@ -19,9 +19,10 @@ export default function Light({ dark }) {
 
   return (
     <>
-      <hemisphereLight ref={hemiLight} color={'blue'} groundColor={'purple'} intensity={1} />
+      {/* <hemisphereLight ref={hemiLight} color={'blue'} groundColor={'purple'} intensity={0.1} /> */}
+      <ambientLight />
       <group ref={group}>
-        <pointLight ref={orbitLight} position={[0,0,35]} intensity={1} />
+        <pointLight ref={orbitLight} position={[0,0,35]} intensity={0.2} />
       </group>
     </>
   )
