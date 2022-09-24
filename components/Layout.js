@@ -15,6 +15,7 @@ import handleResize from '../utils/handleResize'
 import handleScroll from '../utils/handleScroll'
 import Light from './threeJS/Light'
 import Stars from './threeJS/Stars'
+import Cylinder from './threeJS/Cylinder'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
@@ -58,10 +59,7 @@ export default function Layout({ children }) {
             <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
           </EffectComposer> */}
           {/* <Rig /> */}
-          <mesh>
-            <planeBufferGeometry args={[25, 15]} />
-            <meshPhongMaterial color="grey" />
-          </mesh>
+          <Cylinder />
         </Canvas>
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
