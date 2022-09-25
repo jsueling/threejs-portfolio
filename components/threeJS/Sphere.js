@@ -31,8 +31,7 @@ export default function Sphere(props) {
 
   const { color, position, scale, opacity } = useSpring({
     position: newPosition,
-    // color: active ? 'blue' : 'red',
-    color: 'white',
+    color: active ? 'blue' : 'red',
     scale: (active ? 2 : 1) * darkFactor,
     opacity: props.dark ? 1 : 0.4,
     config: config.molasses
@@ -52,7 +51,7 @@ export default function Sphere(props) {
       scale={scale}
     >
       <sphereGeometry args={[0.5, 32, 16]} />
-      <animated.meshStandardMaterial
+      <animated.meshPhongMaterial
         color={color}
         opacity={opacity}
         transparent

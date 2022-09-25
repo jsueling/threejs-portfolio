@@ -14,15 +14,15 @@ export default function Light({ dark }) {
   useHelper(orbitLight, PointLightHelper, 0.5, 'pink')
 
   useFrame((state, delta) => {
-    group.current.rotation.x += 0.01
+    group.current.rotation.x += 0.005
   })
 
   return (
     <>
       {/* <hemisphereLight ref={hemiLight} color={'blue'} groundColor={'purple'} intensity={0.1} /> */}
-      <ambientLight />
+      <ambientLight intensity={0.05}/>
       <group ref={group}>
-        <pointLight ref={orbitLight} position={[0,0,35]} intensity={0.2} />
+        <pointLight ref={orbitLight} position={[0,0,35]} intensity={1} />
       </group>
     </>
   )
