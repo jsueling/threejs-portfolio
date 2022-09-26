@@ -41,7 +41,7 @@ export default function Layout({ children }) {
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
-        <Canvas camera={{ position: [0, 0, 35]}}>
+        <Canvas>
           <color attach="background" args={[dark ? "black" : 'white' ]}/>
           <Light dark={dark} />
           <Boxes

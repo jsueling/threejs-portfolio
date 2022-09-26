@@ -25,7 +25,7 @@ export default function Sphere(props) {
   , []);
 
   const activeFactor = active ? 1.5 : 1
-  const darkFactor = props.dark ? 1 : 2
+  const darkFactor = props.dark ? 1 : 1.3
 
   const newPosition = props.basePosition.map((v) => darkFactor * activeFactor * v)
 
@@ -33,7 +33,7 @@ export default function Sphere(props) {
     position: newPosition,
     color: active ? 'blue' : 'red',
     scale: (active ? 2 : 1) * darkFactor,
-    opacity: props.dark ? 1 : 0.4,
+    opacity: props.dark ? 1 : 0.6,
     config: config.molasses
   })
 
