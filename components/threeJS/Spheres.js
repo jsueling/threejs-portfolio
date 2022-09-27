@@ -5,15 +5,16 @@ import * as THREE from 'three'
 
 import Sphere from './Sphere'
 
-export default function Spheres({ dark, scroll }) {
-  const numSpheres = 100
+export default function Spheres({ offsetPos, dark, scroll }) {
+
+  const numSpheres = 10
   const sphereAngle = (2 * Math.PI) / numSpheres
   // const axis = new THREE.Vector3(0,1,1)
   // const groupAngle = Math.PI * 0.0001
   const basePositionFactor = 10
   
   const spherePositions = (new Array(numSpheres).fill()).map((_, i) => 
-    [basePositionFactor * Math.cos(sphereAngle*i), basePositionFactor * Math.sin(sphereAngle*i), 0]
+    [basePositionFactor * Math.cos(sphereAngle*i) + offsetPos[0], basePositionFactor * Math.sin(sphereAngle*i) + offsetPos[1], offsetPos[2]]
   )
 
   const group = useRef()

@@ -38,6 +38,13 @@ export default function Layout({ children }) {
     { title: 'Projects', href: '/projects'}
   ]
 
+  const numSpheres = 10
+  const angle = (2 * Math.PI) / numSpheres
+
+  const sphereOffsets = (new Array(20).fill()).map((_,i) =>
+    [0, 20*Math.cos(angle*i), 20*Math.sin(angle*i)]
+  )
+
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
@@ -48,10 +55,14 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          <Spheres
-            dark={dark}
-            scroll={scroll}
-          />
+          {sphereOffsets.map((v,i) =>
+            <Spheres
+              key={i}
+              offsetPos={v}
+              dark={dark}
+              scroll={scroll}
+            />
+          )}
           <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
           {/* <AsciiRenderer invert /> */}
           <Stars radius={100} depth={50} count={2000} factor={4} fade />
