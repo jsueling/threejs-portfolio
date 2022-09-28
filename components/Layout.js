@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation } from '@react-three/postprocessing'
 
@@ -21,10 +21,18 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
+  const sphereOffsets = useMemo(() => {
+    const numSpheres = 30
+    const angle = (2 * Math.PI) / numSpheres
+    
+    return(new Array(numSpheres).fill()).map((_,i) =>
+      [0, 20*Math.cos(angle*i), 20*Math.sin(angle*i)]
+    )
+  }, [])
 
   useEffect(() => {
     window.addEventListener("resize", () => handleResize(setMobileMenu))
-    window.addEventListener("scroll", () => handleScroll(setScroll), { capture: true })
+    window.addEventListener("scroll", () => handleScroll(setScroll))
 
     // cleanup effects
     return () => {
@@ -37,13 +45,6 @@ export default function Layout({ children }) {
     { title: 'Home', href: '/'},
     { title: 'Projects', href: '/projects'}
   ]
-
-  const numSpheres = 10
-  const angle = (2 * Math.PI) / numSpheres
-
-  const sphereOffsets = (new Array(20).fill()).map((_,i) =>
-    [0, 20*Math.cos(angle*i), 20*Math.sin(angle*i)]
-  )
 
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
