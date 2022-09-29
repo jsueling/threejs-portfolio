@@ -21,6 +21,7 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
+
   const sphereOffsets = useMemo(() => {
     const numSpheres = 30
     const angle = (2 * Math.PI) / numSpheres
