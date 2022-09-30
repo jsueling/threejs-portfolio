@@ -22,12 +22,12 @@ export default function Layout({ children }) {
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
 
-  const sphereOffsets = useMemo(() => {
-    const numSpheres = 30
-    const angle = (2 * Math.PI) / numSpheres
-    
-    return(new Array(numSpheres).fill()).map((_,i) =>
-      [0, 20*Math.cos(angle*i), 20*Math.sin(angle*i)]
+  const ringOffsets = useMemo(() => {
+    const numRings = 10
+    const angle = (2 * Math.PI) / numRings
+
+    return(new Array(numRings).fill()).map((_,i) =>
+      [0, 20*Math.cos(angle*i), 20*Math.sin(angle*i), i*angle]
     )
   }, [])
 
@@ -57,7 +57,7 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          {sphereOffsets.map((v,i) =>
+          {ringOffsets.map((v,i) =>
             <Spheres
               key={i}
               offsetPos={v}

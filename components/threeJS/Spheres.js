@@ -6,19 +6,23 @@ import * as THREE from 'three'
 import Sphere from './Sphere'
 
 export default function Spheres({ offsetPos, dark, scroll }) {
+  const group = useRef()
+  // console.log(offsetPos);
 
   const spherePositions = useMemo(() => {
 
-    const numSpheres = 10
+    const numSpheres = 20
     const sphereAngle = (2 * Math.PI) / numSpheres
-    const basePositionFactor = 10
+    const radius = 5
 
     return (new Array(numSpheres).fill()).map((_, i) => 
-      [basePositionFactor * Math.cos(sphereAngle*i) + offsetPos[0], basePositionFactor * Math.sin(sphereAngle*i) + offsetPos[1], offsetPos[2]]
+      [radius * Math.cos(sphereAngle*i) + offsetPos[0], radius * Math.sin(sphereAngle*i) + offsetPos[1], offsetPos[2]]
     )  
   }, [offsetPos])
 
-  const group = useRef()
+  // if (group.current) {
+  //   group.current.rotation.y = offsetPos[3] / 8
+  // }
 
   return (
     <animated.group ref={group} >
