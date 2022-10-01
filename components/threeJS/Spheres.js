@@ -7,7 +7,6 @@ import Sphere from './Sphere'
 
 export default function Spheres({ offsetPos, dark, scroll }) {
   const group = useRef()
-  // console.log(offsetPos);
 
   const spherePositions = useMemo(() => {
 
@@ -17,12 +16,15 @@ export default function Spheres({ offsetPos, dark, scroll }) {
 
     return (new Array(numSpheres).fill()).map((_, i) => 
       [radius * Math.cos(sphereAngle*i) + offsetPos[0], radius * Math.sin(sphereAngle*i) + offsetPos[1], offsetPos[2]]
-    )  
+    )
   }, [offsetPos])
 
-  // if (group.current) {
-  //   group.current.rotation.y = offsetPos[3] / 8
-  // }
+  if (group.current) {
+    // console.log(offsetPos[3]);
+    // console.log(Math.PI * 7/4);
+    group.current.rotation.x = offsetPos[3]
+    // group.current.rotation.x = Math.PI * 7/4
+  }
 
   return (
     <animated.group ref={group} >
