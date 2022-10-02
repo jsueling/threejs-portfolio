@@ -20,8 +20,10 @@ export default function Spheres({ offsetPos, dark, scroll }) {
   }, [offsetPos])
 
   if (group.current) {
-    // console.log(offsetPos[3]);
     // console.log(Math.PI * 7/4);
+    console.log(offsetPos);
+    // x red, y green, z blue
+    // 0 20 0 coords 0 rotation
     group.current.rotation.x = offsetPos[3]
     // group.current.rotation.x = Math.PI * 7/4
   }
