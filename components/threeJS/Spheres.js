@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { animated } from '@react-spring/three'
 import * as THREE from 'three'
@@ -19,14 +19,11 @@ export default function Spheres({ offsetPos, dark, scroll }) {
     )
   }, [offsetPos])
 
-  if (group.current) {
-    // console.log(Math.PI * 7/4);
-    console.log(offsetPos);
-    // x red, y green, z blue
-    // 0 20 0 coords 0 rotation
-    group.current.rotation.x = offsetPos[3]
-    // group.current.rotation.x = Math.PI * 7/4
-  }
+  // https://stackoverflow.com/questions/63064828/react-three-fiber-rotate-around-a-certain-axis
+
+  useEffect(() => {
+    group.current.rotateOnAxis(new THREE.Vector3(offsetPos[0],offsetPos[1],offsetPos[2]), offsetPos[3])
+  }, [offsetPos])
 
   return (
     <animated.group ref={group} >
