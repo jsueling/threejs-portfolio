@@ -21,19 +21,29 @@ export default function Spheres({ offsetPos, dark, scroll }) {
 
   // https://stackoverflow.com/questions/63064828/react-three-fiber-rotate-around-a-certain-axis
 
+  // https://stackoverflow.com/questions/28848863/threejs-how-to-rotate-around-objects-own-center-instead-of-world-center
+  // https://stackoverflow.com/questions/37779104/how-can-i-rotate-around-the-center-of-a-group-in-three-js
+  // https://jsfiddle.net/f2Lommf5/6202/
+  // using group as pivot point
+  
+  console.log(offsetPos.slice(0,3));
+  console.log(group.current.position);
+
   useEffect(() => {
-    group.current.rotateOnAxis(new THREE.Vector3(offsetPos[0],offsetPos[1],offsetPos[2]), offsetPos[3])
-  }, [offsetPos])
+    // group.current.rotation.x = offsetPos[3] / 2
+  }, [])
 
   return (
-    <animated.group ref={group} >
-      {spherePositions.map((v,i) =>
-        <Sphere
-          dark={dark}
-          basePosition={v}
-          key={v}
-        />
-      )}
-    </animated.group>
+    <group>
+      <animated.group position={offsetPos.slice(0,3)} ref={group}>
+        {spherePositions.map((v,i) =>
+          <Sphere
+            dark={dark}
+            basePosition={v}
+            key={v}
+          />
+        )}
+      </animated.group>
+    </group>
   )
 }
