@@ -26,24 +26,22 @@ export default function Spheres({ offsetPos, dark, scroll }) {
   // https://jsfiddle.net/f2Lommf5/6202/
   // using group as pivot point
   
-  console.log(offsetPos.slice(0,3));
-  console.log(group.current.position);
+  // console.log(offsetPos.slice(0,3));
+  // console.log(group.current);
 
   useEffect(() => {
     // group.current.rotation.x = offsetPos[3] / 2
   }, [])
 
   return (
-    <group>
-      <animated.group position={offsetPos.slice(0,3)} ref={group}>
-        {spherePositions.map((v,i) =>
-          <Sphere
-            dark={dark}
-            basePosition={v}
-            key={v}
-          />
-        )}
-      </animated.group>
-    </group>
+    <animated.group quaternion={new THREE.Quaternion(Math.cos(offsetPos[3]/2), 0, 0, Math.sin(offsetPos[3]/2))} ref={group}>
+      {spherePositions.map((v,i) =>
+        <Sphere
+          dark={dark}
+          basePosition={v}
+          key={v}
+        />
+      )}
+    </animated.group>
   )
 }
