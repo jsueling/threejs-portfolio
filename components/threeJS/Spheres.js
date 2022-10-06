@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import Sphere from './Sphere'
 
 export default function Spheres({ offsetPos, dark, scroll }) {
+
   const group = useRef()
 
   const spherePositions = useMemo(() => {
@@ -15,8 +16,12 @@ export default function Spheres({ offsetPos, dark, scroll }) {
     const radius = 5
 
     return (new Array(numSpheres).fill()).map((_, i) => 
-      [radius * Math.cos(sphereAngle*i) + offsetPos[0], radius * Math.sin(sphereAngle*i) + offsetPos[1], offsetPos[2]]
+      [radius * Math.cos(sphereAngle*i), radius * Math.sin(sphereAngle*i), 0]
     )
+  }, [])
+
+  useEffect(() => {
+    group.current.rotation.x = offsetPos[3]
   }, [offsetPos])
 
   // https://stackoverflow.com/questions/63064828/react-three-fiber-rotate-around-a-certain-axis
@@ -25,16 +30,9 @@ export default function Spheres({ offsetPos, dark, scroll }) {
   // https://stackoverflow.com/questions/37779104/how-can-i-rotate-around-the-center-of-a-group-in-three-js
   // https://jsfiddle.net/f2Lommf5/6202/
   // using group as pivot point
-  
-  // console.log(offsetPos.slice(0,3));
-  // console.log(group.current);
-
-  useEffect(() => {
-    // group.current.rotation.x = offsetPos[3] / 2
-  }, [])
 
   return (
-    <animated.group quaternion={new THREE.Quaternion(Math.cos(offsetPos[3]/2), 0, 0, Math.sin(offsetPos[3]/2))} ref={group}>
+    <animated.group position={offsetPos.slice(0,3)} ref={group}>
       {spherePositions.map((v,i) =>
         <Sphere
           dark={dark}
