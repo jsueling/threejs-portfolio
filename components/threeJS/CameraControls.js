@@ -35,8 +35,10 @@ export default function Arcball({ scroll, enabled }) {
       // angle from camera to origin for quaternion orientation
       const theta = Math.PI-angle
 
+      const distance = 20
+
       state.camera.quaternion.slerp(new THREE.Quaternion(Math.cos(-theta/2),0,0,Math.sin(-theta/2)), 0.5)
-      state.camera.position.lerp(new THREE.Vector3(0, 12*Math.sin(angle), 12*Math.cos(angle)), 0.5)
+      state.camera.position.lerp(new THREE.Vector3(0, distance *Math.sin(angle), distance *Math.cos(angle)), 0.5)
       state.camera.updateProjectionMatrix()
     }
   })

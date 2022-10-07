@@ -23,11 +23,12 @@ export default function Layout({ children }) {
   const [dark, setDark] = useDarkMode(false)
 
   const ringOffsets = useMemo(() => {
+    const distance = 20
     const numRings = 20
     const angle = (2 * Math.PI) / numRings
   
     return(new Array(numRings).fill()).map((_,i) =>
-      [0, 20*Math.cos(angle*i), 20*Math.sin(angle*i), i*angle]
+      [0, distance * Math.cos(angle*i), distance * Math.sin(angle*i), i*angle]
     )
   }, [])
 
