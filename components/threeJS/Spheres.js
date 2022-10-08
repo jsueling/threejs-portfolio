@@ -15,10 +15,17 @@ export default function Spheres({ offsetPos, dark, scroll }) {
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
 
+    const cameraDist = Math.abs(offsetPos[3] - scroll * Math.PI * 2)
+    console.log(cameraDist);
+
     return (new Array(numSpheres).fill()).map((_, i) => 
-      [radius * Math.cos(sphereAngle*i), radius * Math.sin(sphereAngle*i), 0]
+      [cameraDist + radius * Math.cos(sphereAngle*i), cameraDist + radius * Math.sin(sphereAngle*i), 0]
     )
-  }, [])
+  }, [scroll, offsetPos])
+
+  // useFrame((state) => {
+  //   console.log(group.current.position,state.camera.position.x);
+  // })
 
   useEffect(() => {
     group.current.rotation.x = offsetPos[3]
