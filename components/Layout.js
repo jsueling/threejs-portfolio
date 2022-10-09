@@ -4,7 +4,7 @@ import { EffectComposer, Pixelation } from '@react-three/postprocessing'
 
 import useDarkMode from '../hooks/useDarkMode'
 import Boxes from './threeJS/Boxes'
-import Spheres from './threeJS/Spheres'
+import Rings from './threeJS/Rings'
 import NavBar from './NavBar' // Home, Projects
 import Footer from './Footer' // Contact
 import MobileMenu from './MobileMenu'
@@ -22,15 +22,7 @@ export default function Layout({ children }) {
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
 
-  const ringOffsets = useMemo(() => {
-    const distance = 20
-    const numRings = 20
-    const angle = (2 * Math.PI) / numRings
-  
-    return(new Array(numRings).fill()).map((_,i) =>
-      [0, distance * Math.cos(angle*i), distance * Math.sin(angle*i), i*angle]
-    )
-  }, [])
+
 
   useEffect(() => {
     window.addEventListener("resize", () => handleResize(setMobileMenu))
@@ -58,14 +50,10 @@ export default function Layout({ children }) {
             dark={dark}
             scroll={scroll}
           />
-          {ringOffsets.map((v,i) =>
-            <Spheres
-              key={v}
-              offsetPos={v}
-              dark={dark}
-              scroll={scroll}
-            />
-          )}
+          <Rings
+            dark={dark}
+            scroll={scroll}
+          />
           <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
           {/* <AsciiRenderer invert /> */}
           <Stars radius={100} depth={50} count={2000} factor={4} fade />
