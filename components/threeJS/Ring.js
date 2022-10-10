@@ -16,7 +16,6 @@ export default function Spheres({ offsetPos, dark, scroll }) {
     const radius = 5
 
     const cameraDist = Math.abs(offsetPos[3] - scroll * Math.PI * 2)
-    console.log(cameraDist);
 
     return (new Array(numSpheres).fill()).map((_, i) => 
       [cameraDist + radius * Math.cos(sphereAngle*i), cameraDist + radius * Math.sin(sphereAngle*i), 0]

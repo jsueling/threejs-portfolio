@@ -22,8 +22,6 @@ export default function Layout({ children }) {
   const [scroll, setScroll] = useState(0)
   const [dark, setDark] = useDarkMode(false)
 
-
-
   useEffect(() => {
     window.addEventListener("resize", () => handleResize(setMobileMenu))
     window.addEventListener("scroll", () => handleScroll(setScroll))
