@@ -1,34 +1,48 @@
 import { useRef, useMemo, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { animated } from '@react-spring/three'
-import * as THREE from 'three'
 
 import Sphere from './Sphere'
 
-export default function Spheres({ offsetPos, dark, scroll }) {
+export default function Spheres({ ringPosition, dark }) {
 
   const group = useRef()
 
-  const spherePositions = useMemo(() => {
+  const originalPositions = useMemo(() => {
 
     const numSpheres = 20
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
-
-    const cameraDist = Math.abs(offsetPos[3] - scroll * Math.PI * 2)
-
+  
     return (new Array(numSpheres).fill()).map((_, i) => 
-      [cameraDist + radius * Math.cos(sphereAngle*i), cameraDist + radius * Math.sin(sphereAngle*i), 0]
+      [radius * Math.cos(sphereAngle*i), radius * Math.sin(sphereAngle*i), 0]
     )
-  }, [scroll, offsetPos])
+  }, [])
 
-  // useFrame((state) => {
-  //   console.log(group.current.position,state.camera.position.x);
-  // })
+  // console.log(originalPositions);
+  const finalPositions = originalPositions.slice()
+
+  useFrame((state) => {
+    const a = ringPosition[1]
+    const b = ringPosition[2]
+    const c = state.camera.position.y
+    const d = state.camera.position.z
+    const cameraDist = (a-c) ** 2 + (b-d) ** 2
+
+    finalPositions.forEach((pos) => {
+      pos[1] = cameraDist
+      pos[2] = cameraDist
+    })
+    console.log(finalPositions);
+  })
+
+  // console.log(finalPositions);
+
+  // useFrame to get cameraPos, calculate pythag dist between camera and each ring then pass to Ring
 
   useEffect(() => {
-    group.current.rotation.x = offsetPos[3]
-  }, [offsetPos])
+    group.current.rotation.x = ringPosition[3]
+  }, [ringPosition])
 
   // https://stackoverflow.com/questions/63064828/react-three-fiber-rotate-around-a-certain-axis
 
@@ -38,8 +52,8 @@ export default function Spheres({ offsetPos, dark, scroll }) {
   // using group as pivot point
 
   return (
-    <animated.group position={offsetPos.slice(0,3)} ref={group}>
-      {spherePositions.map((v,i) =>
+    <animated.group position={ringPosition.slice(0,3)} ref={group}>
+      {finalPositions.map((v,i) =>
         <Sphere
           dark={dark}
           basePosition={v}
