@@ -10,7 +10,7 @@ export default function Spheres({ ringPosition, dark }) {
 
   const originalPositions = useMemo(() => {
 
-    const numSpheres = 20
+    const numSpheres = 10
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
   
@@ -19,21 +19,16 @@ export default function Spheres({ ringPosition, dark }) {
     )
   }, [])
 
-  // console.log(originalPositions);
-  const finalPositions = originalPositions.slice()
+  const finalPositions = useMemo(() => {
+    return originalPositions.slice()
+  }, [originalPositions])
 
   useFrame((state) => {
     const a = ringPosition[1]
     const b = ringPosition[2]
     const c = state.camera.position.y
     const d = state.camera.position.z
-    const cameraDist = (a-c) ** 2 + (b-d) ** 2
-
-    finalPositions.forEach((pos) => {
-      pos[1] = cameraDist
-      pos[2] = cameraDist
-    })
-    console.log(finalPositions);
+    const cameraDist = Math.sqrt((a-c) ** 2 + (b-d) ** 2)
   })
 
   // console.log(finalPositions);
