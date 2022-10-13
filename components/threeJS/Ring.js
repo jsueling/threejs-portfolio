@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect } from 'react'
+import { useRef, useMemo, useEffect, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { animated } from '@react-spring/three'
 
@@ -8,27 +8,25 @@ export default function Spheres({ ringPosition, dark }) {
 
   const group = useRef()
 
-  const originalPositions = useMemo(() => {
+  const [info, setInfo] = useState()
+
+  const spherePositions = useMemo(() => {
 
     const numSpheres = 10
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
   
     return (new Array(numSpheres).fill()).map((_, i) => 
-      [radius * Math.cos(sphereAngle*i), radius * Math.sin(sphereAngle*i), 0]
+      [(info + radius) * Math.cos(sphereAngle*i), (info + radius) * Math.sin(sphereAngle*i), 0]
     )
-  }, [])
-
-  const finalPositions = useMemo(() => {
-    return originalPositions.slice()
-  }, [originalPositions])
+  }, [info])
 
   useFrame((state) => {
     const a = ringPosition[1]
     const b = ringPosition[2]
     const c = state.camera.position.y
     const d = state.camera.position.z
-    const cameraDist = Math.sqrt((a-c) ** 2 + (b-d) ** 2)
+    setInfo(0.25 * (Math.sqrt((a-c) ** 2 + (b-d) ** 2)))
   })
 
   // console.log(finalPositions);
@@ -48,7 +46,7 @@ export default function Spheres({ ringPosition, dark }) {
 
   return (
     <animated.group position={ringPosition.slice(0,3)} ref={group}>
-      {finalPositions.map((v,i) =>
+      {spherePositions.map((v,i) =>
         <Sphere
           dark={dark}
           basePosition={v}
