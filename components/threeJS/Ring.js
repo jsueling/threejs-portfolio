@@ -11,13 +11,13 @@ export default function Spheres({ ringPosition, dark }) {
   const [info, setInfo] = useState()
 
   const spherePositions = useMemo(() => {
-
     const numSpheres = 10
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
-  
+    const coefficient = 5 - info * 0.5 + radius
+
     return (new Array(numSpheres).fill()).map((_, i) => 
-      [(info + radius) * Math.cos(sphereAngle*i), (info + radius) * Math.sin(sphereAngle*i), 0]
+      [coefficient * Math.cos(sphereAngle*i), coefficient * Math.sin(sphereAngle*i), 0]
     )
   }, [info])
 
