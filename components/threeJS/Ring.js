@@ -8,25 +8,25 @@ export default function Spheres({ ringPosition, dark }) {
 
   const group = useRef()
 
-  const [info, setInfo] = useState()
+  const [cameraDist, setCameraDist] = useState()
 
   const spherePositions = useMemo(() => {
     const numSpheres = 10
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
-    const coefficient = 5 - info * 0.5 + radius
+    const coefficient = 5 - cameraDist * 0.5 + radius
 
     return (new Array(numSpheres).fill()).map((_, i) => 
       [coefficient * Math.cos(sphereAngle*i), coefficient * Math.sin(sphereAngle*i), 0]
     )
-  }, [info])
+  }, [cameraDist])
 
   useFrame((state) => {
     const a = ringPosition[1]
     const b = ringPosition[2]
     const c = state.camera.position.y
     const d = state.camera.position.z
-    setInfo(0.25 * (Math.sqrt((a-c) ** 2 + (b-d) ** 2)))
+    setCameraDist(0.1 * 0.25 * Math.round(10 * (Math.sqrt((a-c) ** 2 + (b-d) ** 2)))) // reduce number of recomputations by useMemo by rounding cameraDist variable
   })
 
   // console.log(finalPositions);
