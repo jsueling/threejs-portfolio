@@ -33,7 +33,6 @@ export default function Sphere(props) {
     position: newPosition,
     color: active ? 'blue' : 'red',
     scale: (active ? 2 : 1) * darkFactor,
-    opacity: props.dark ? 1 : 0.7,
     config: config.molasses
   })
 
@@ -53,7 +52,6 @@ export default function Sphere(props) {
       <sphereGeometry args={[0.5, 32, 16]} />
       <animated.meshPhongMaterial
         color={color}
-        opacity={opacity}
         transparent
       />
     </animated.mesh>
