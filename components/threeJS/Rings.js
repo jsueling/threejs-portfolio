@@ -1,7 +1,7 @@
 import Ring from './Ring'
 import { useMemo } from 'react'
 
-export default function SphereRing({ dark }) {
+export default function Rings({ dark }) {
 
   const ringPositions = useMemo(() => {
     const radius = 20

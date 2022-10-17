@@ -22,7 +22,7 @@ export default function Light({ dark }) {
       {/* <hemisphereLight ref={hemiLight} color={'blue'} groundColor={'purple'} intensity={0.1} /> */}
       <ambientLight intensity={0.05}/>
       <group ref={group}>
-        <pointLight ref={orbitLight} position={[0,0,35]} intensity={1} />
+        <pointLight castShadow={true} ref={orbitLight} position={[0,0,20]} intensity={1} />
       </group>
     </>
   )

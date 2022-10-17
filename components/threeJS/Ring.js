@@ -4,7 +4,7 @@ import { animated } from '@react-spring/three'
 
 import Sphere from './Sphere'
 
-export default function Spheres({ ringPosition, dark }) {
+export default function Ring({ ringPosition, dark }) {
 
   const group = useRef()
 
