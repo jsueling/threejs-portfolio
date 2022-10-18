@@ -14,7 +14,7 @@ export default function Ring({ ringPosition, dark }) {
     const numSpheres = 10
     const sphereAngle = (2 * Math.PI) / numSpheres
     const radius = 5
-    const coefficient = 5 - cameraDist * 0.5 + radius
+    const coefficient = 5 - cameraDist * 0.9 + radius
 
     return (new Array(numSpheres).fill()).map((_, i) => 
       [coefficient * Math.cos(sphereAngle*i), coefficient * Math.sin(sphereAngle*i), 0]
