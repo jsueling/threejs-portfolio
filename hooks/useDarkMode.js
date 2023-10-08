@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
 
-import useLayoutEffect from '../hooks/useLayoutEffect'
-
 const useDarkMode = () => {
   const [dark, setDark] = useState()
 
   // after first render, check first in localStorage, else use prefers-color-scheme
-  useLayoutEffect(() => {
+  useEffect(() => {
     const storedValue = JSON.parse(window.localStorage.getItem('darkMode'))
     setDark(
       typeof storedValue === 'boolean'
