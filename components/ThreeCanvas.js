@@ -5,7 +5,6 @@ import Boxes from './threeJS/Boxes'
 import Rings from './threeJS/Rings'
 import CameraControls from './threeJS/CameraControls'
 import AsciiRenderer from './threeJS/AsciiRenderer'
-import Rig from './threeJS/Rig'
 import Light from './threeJS/Light'
 import Stars from './threeJS/Stars'
 import Cylinder from './threeJS/Cylinder'
@@ -30,7 +29,6 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
       {/* <EffectComposer>
         <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
       </EffectComposer> */}
-      <Rig />
       <Cylinder />
     </Canvas>
   )
