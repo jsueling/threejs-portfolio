@@ -7,18 +7,14 @@ export default function Arcball({ scroll, enabled }) {
   
 
   const controls = useRef()
-  useFrame((state,delta) => {
+  const origin = new THREE.Vector3(0,0,0)
+  useFrame((state) => {
     if (!enabled) {
       // angle from origin to camera for vector position
       const angle = scroll * Math.PI * 2
-      // angle from camera to origin for quaternion orientation
-      const theta = Math.PI-angle
-
       const distance = 20
-
-      state.camera.quaternion.slerp(new THREE.Quaternion(Math.cos(-theta/2),0,0,Math.sin(-theta/2)), 0.1)
-      state.camera.position.lerp(new THREE.Vector3(0, distance *Math.sin(angle), distance *Math.cos(angle)), 0.1)
-      state.camera.updateProjectionMatrix()
+      state.camera.position.lerp(new THREE.Vector3(distance * Math.sin(angle), 0, distance * Math.cos(angle)), 0.1)
+      state.camera.lookAt(origin)
     }
   })
 
