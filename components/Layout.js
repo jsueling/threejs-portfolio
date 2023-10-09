@@ -1,21 +1,12 @@
-import { useEffect, useState, useMemo } from 'react'
-import { Canvas } from "@react-three/fiber"
-import { EffectComposer, Pixelation } from '@react-three/postprocessing'
+import { useEffect, useState } from 'react'
 
 import useDarkMode from '../hooks/useDarkMode'
-import Boxes from './threeJS/Boxes'
-import Rings from './threeJS/Rings'
-import NavBar from './NavBar' // Home, Projects
-import Footer from './Footer' // Contact
+import NavBar from './NavBar'
+import Footer from './Footer'
 import MobileMenu from './MobileMenu'
-import CameraControls from './threeJS/CameraControls'
-import AsciiRenderer from './threeJS/AsciiRenderer'
-import Rig from './threeJS/Rig'
 import handleResize from '../utils/handleResize'
 import handleScroll from '../utils/handleScroll'
-import Light from './threeJS/Light'
-import Stars from './threeJS/Stars'
-import Cylinder from './threeJS/Cylinder'
+import ThreeCanvas from './ThreeCanvas'
 
 export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenu] = useState(false)
@@ -41,26 +32,11 @@ export default function Layout({ children }) {
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
-        <Canvas>
-          <color attach="background" args={[dark ? "black" : 'white' ]}/>
-          <Light dark={dark} />
-          <Boxes
-            dark={dark}
-            scroll={scroll}
-          />
-          <Rings
-            dark={dark}
-            scroll={scroll}
-          />
-          <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
-          {/* <AsciiRenderer invert /> */}
-          <Stars radius={100} depth={50} count={2000} factor={4} fade />
-          {/* <EffectComposer>
-            <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
-          </EffectComposer> */}
-          {/* <Rig /> */}
-          <Cylinder />
-        </Canvas>
+      <ThreeCanvas
+        mobileMenuOpen={mobileMenuOpen}
+        scroll={scroll}
+        dark={dark}
+      />
       </div>
       <div id='content' className='grid grid-cols-6 absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
         <NavBar
