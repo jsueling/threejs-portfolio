@@ -1,6 +1,9 @@
 import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation } from '@react-three/postprocessing'
 
+// inspiration: https://docs.pmnd.rs/react-three-fiber/getting-started/examples
+// bloom Sun https://codesandbox.io/s/whnhyr
+
 import Boxes from './threeJS/Boxes'
 import Rings from './threeJS/Rings'
 import CameraControls from './threeJS/CameraControls'
@@ -25,7 +28,10 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
       />
       <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
       {/* <AsciiRenderer invert /> */}
-      <Stars radius={100} depth={50} count={2000} factor={4} fade />
+      <Stars
+        frequency={500}
+        dark={dark}
+      />
       {/* <EffectComposer>
         <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} />
       </EffectComposer> */}
