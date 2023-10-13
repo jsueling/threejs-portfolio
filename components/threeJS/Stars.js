@@ -26,8 +26,8 @@ export default function Stars({ dark, frequency }) {
     return new Float32Array(arr)
   })
   useFrame((_, delta) => {
-    ref.current.rotation.x += delta / 20
-    ref.current.rotation.y += delta / 50
+    ref.current.rotation.x += delta / 10
+    ref.current.rotation.y += delta / 30
   })
   return (
     <Points

@@ -25,7 +25,6 @@ export default function Arcball({ scroll, enabled }) {
     <>
       <ArcballControls ref={controls} dampingFactor={1} enabled={enabled}/>
       {/* <OrbitControls ref={controls} /> */}
-      <axesHelper />
     </>
   )
 }

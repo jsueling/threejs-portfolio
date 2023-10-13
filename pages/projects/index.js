@@ -13,6 +13,7 @@ export default function Projects() {
       <div>
         <h1 className='mb-10'>Projects</h1>
         <div className='animateOnScroll'>
+          {/* replace with same color full opacity bg like bg-white dark:bg-black*/}
           <p className='mb-10 bg-red-200 bg-opacity-40 opacity-0'>
             Etiam diam quam, pharetra sit amet nibh sit amet, finibus mollis lorem. Vestibulum lobortis vestibulum placerat. Proin fringilla, nulla in imperdiet sollicitudin, eros purus gravida nisi, scelerisque egestas nunc tortor eu ante. Proin ornare ultrices arcu, eu dapibus enim imperdiet et. Mauris luctus turpis eget convallis mollis. Mauris molestie quam quis erat hendrerit, eget elementum ipsum porta. Vestibulum venenatis sagittis risus in ullamcorper. Vestibulum eget egestas libero. Integer a dolor a turpis fermentum efficitur. Vestibulum ultrices consectetur purus, ac ultricies libero posuere a.
           </p>
