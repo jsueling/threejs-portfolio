@@ -2,6 +2,9 @@ import { Canvas } from "@react-three/fiber"
 import { EffectComposer, Pixelation, Bloom } from '@react-three/postprocessing'
 
 // inspiration: https://docs.pmnd.rs/react-three-fiber/getting-started/examples
+// Depth of Field https://codesandbox.io/s/bst0cy?file=/src/App.js
+// Effect Composer https://docs.pmnd.rs/react-postprocessing/effect-composer
+// God ray https://codesandbox.io/s/yggpw5?file=/src/App.js:243-250
 
 // import Boxes from './threeJS/Boxes'
 // import Rings from './threeJS/Rings'
@@ -26,7 +29,10 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
         dark={dark}
         scroll={scroll}
       /> */}
-      <CameraControls scroll={scroll} enabled={mobileMenuOpen} />
+      <CameraControls
+        scroll={scroll}
+        enabled={mobileMenuOpen}
+      />
         <Planet
           dark={dark}
         />
@@ -34,7 +40,9 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
           frequency={100}
           dark={dark}
         />
-      <EffectComposer autoClear={false}>
+      <EffectComposer
+        autoClear={false}
+      >
         <Bloom
             intensity={dark ? 10 : 0}
             luminanceThreshold={0}

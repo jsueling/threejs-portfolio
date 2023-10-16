@@ -13,7 +13,7 @@ export default function Arcball({ scroll, enabled }) {
       // angle from origin to camera for vector position
       const angle = scroll * Math.PI * 2
       const distance = 20
-      state.camera.position.lerp(new THREE.Vector3(distance * Math.sin(angle), 0, distance * Math.cos(angle)), 0.1)
+      state.camera.position.lerp(new THREE.Vector3(distance * Math.sin(angle), 0, distance * Math.cos(angle)), 0.6)
       state.camera.lookAt(origin)
     }
   })

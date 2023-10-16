@@ -11,7 +11,7 @@ export default function Light({ dark }) {
   const group = useRef()
   // useHelper(pointLight, PointLightHelper, 0.5, 'blue')
   // useHelper(hemiLight, HemisphereLightHelper, 0.5, 'red')
-  useHelper(orbitLight, PointLightHelper, 0.5, 'pink')
+  // useHelper(orbitLight, PointLightHelper, 0.5, 'pink')
 
   useFrame((state, delta) => {
     group.current.rotation.x += 0.005

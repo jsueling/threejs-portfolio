@@ -36,9 +36,6 @@ module.exports = {
           '100%': { opacity: '1' }
         }
       },
-      fontFamily: { // https://tailwindcss.com/docs/font-family#customizing-the-default-font
-        'sans': ['Roboto',  ...defaultTheme.fontFamily.sans],
-      },
       animation: { // duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name
         fadeInUp: '0.5s ease-in-out 0s 1 normal forwards running fadeInUpAbs',
         fadeOutDown: '0.5s ease-in-out 0s 1 normal forwards running fadeOutDownAbs',
