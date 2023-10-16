@@ -6,13 +6,10 @@ import { EffectComposer, Pixelation, Bloom } from '@react-three/postprocessing'
 // Effect Composer https://docs.pmnd.rs/react-postprocessing/effect-composer
 // God ray https://codesandbox.io/s/yggpw5?file=/src/App.js:243-250
 
-// import Boxes from './threeJS/Boxes'
-// import Rings from './threeJS/Rings'
 // import AsciiRenderer from './threeJS/AsciiRenderer'
 import CameraControls from './threeJS/CameraControls'
 import Light from './threeJS/Light'
 import Stars from './threeJS/Stars'
-import Cylinder from './threeJS/Cylinder'
 import Planet from "./threeJS/Planet"
 
 export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
@@ -21,14 +18,6 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
     <Canvas>
       <color attach="background" args={[dark ? "black" : 'white' ]}/>
       <Light dark={dark} />
-      {/* <Boxes
-        dark={dark}
-        scroll={scroll}
-      />
-      <Rings
-        dark={dark}
-        scroll={scroll}
-      /> */}
       <CameraControls
         scroll={scroll}
         enabled={mobileMenuOpen}
@@ -52,7 +41,6 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
         {/* <Pixelation granularity={(1-Math.sin(scroll*Math.PI))* 15} /> */}
         {/* <AsciiRenderer invert/> */}
       </EffectComposer>
-      <Cylinder />
     </Canvas>
   )
 }
