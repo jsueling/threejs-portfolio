@@ -39,7 +39,7 @@ export default function Stars({ dark, frequency }) {
       <PointMaterial
         transparent
         color={dark ? 'white' : 'black'}
-        size={0.4}
+        size={dark ? 0.4 : 1}
         depthWrite={false} // https://threejs.org/docs/#api/en/materials/Material.depthWrite
       />
     </Points>
