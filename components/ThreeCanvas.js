@@ -21,7 +21,7 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
   return (
     <Canvas>
       <color attach="background" args={[dark ? "black" : 'grey' ]}/>
-      <Light dark={dark} />
+      <Light />
       <CameraControls
         scroll={scroll}
         enabled={mobileMenuOpen}
