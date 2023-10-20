@@ -15,7 +15,7 @@ const genStar = r => {
   )
 }
 
-export default function Stars({ dark, frequency }) {
+export default function Stars({ dark, frequency, homePosition }) {
 
   const ref = useRef()
   const [sphere] = useState(() => {
@@ -35,6 +35,7 @@ export default function Stars({ dark, frequency }) {
       positions={sphere}
       stride={3}
       frustumCulled={false}
+      position={homePosition}
     >
       <PointMaterial
         transparent

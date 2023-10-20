@@ -1,8 +1,8 @@
 import { MeshReflectorMaterial } from '@react-three/drei'
 
-export default function Planet({ dark }) {
+export default function Planet({ dark, homePosition }) {
   return (
-    <mesh>
+    <mesh position={homePosition}>
       <sphereGeometry args={[10, 64, 32]} />
       {/* <meshStandardMaterial color={dark ? 'white' : 'black'} /> */}
       <MeshReflectorMaterial // reference https://github.com/pmndrs/drei#meshreflectormaterial + https://codesandbox.io/s/image-gallery-lx2h8?file=/src/App.js:1040-1055

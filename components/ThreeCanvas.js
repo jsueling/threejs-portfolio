@@ -17,21 +17,25 @@ import Planet from "./threeJS/Planet"
 import Effects from "./threeJS/Effects";
 
 export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
-
+  const homePosition = [0, 0, -100]
   return (
     <Canvas>
       <color attach="background" args={[dark ? "black" : 'grey' ]}/>
-      <Light />
+      <Light
+        homePosition={homePosition}
+      />
       <CameraControls
         scroll={scroll}
         enabled={mobileMenuOpen}
       />
       <Planet
         dark={dark}
+        homePosition={homePosition}
       />
       <Stars
         frequency={100}
         dark={dark}
+        homePosition={homePosition}
       />
       <Effects dark={dark} />
     </Canvas>
