@@ -1,7 +1,5 @@
 import { EffectComposer, Pixelation, Bloom, Noise, Vignette, DepthOfField, GodRays } from '@react-three/postprocessing'
 import { BlendFunction } from "postprocessing";
-import { Suspense } from 'react';
-import { useControls } from 'leva'
 
 // import AsciiRenderer from './AsciiRenderer'
 

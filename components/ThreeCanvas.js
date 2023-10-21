@@ -1,7 +1,4 @@
 import { Canvas } from "@react-three/fiber"
-import { EffectComposer, Pixelation, Bloom, Noise, Vignette, DepthOfField, GodRays } from '@react-three/postprocessing'
-import { BlendFunction, Effect } from "postprocessing";
-import { useState } from "react";
 
 // inspiration: https://docs.pmnd.rs/react-three-fiber/getting-started/examples
 // Depth of Field https://codesandbox.io/s/bst0cy?file=/src/App.js
@@ -9,8 +6,7 @@ import { useState } from "react";
 // God ray https://codesandbox.io/s/yggpw5?file=/src/App.js:243-250
 // fog
 
-// import AsciiRenderer from './threeJS/AsciiRenderer'
-import CameraControls from './threeJS/CameraControls'
+import ArcballCamera from './threeJS/ArcballCamera'
 import Light from './threeJS/Light'
 import Stars from './threeJS/Stars'
 import Planet from "./threeJS/Planet"
@@ -24,7 +20,7 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
       <Light
         homePosition={homePosition}
       />
-      <CameraControls
+      <ArcballCamera
         scroll={scroll}
         enabled={mobileMenuOpen}
       />
@@ -37,6 +33,10 @@ export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
         dark={dark}
         homePosition={homePosition}
       />
+      <mesh position={[0, 0, 100]}>
+        <sphereGeometry attach='geometry' args={[10, 64, 32]} />
+        <meshBasicMaterial attach='material' color='red' />
+      </mesh>
       <Effects dark={dark} />
     </Canvas>
   )

@@ -26,6 +26,7 @@ export default function Layout({ children }) {
 
   const menuItems = [
     { title: 'Home', href: '/'},
+    { title: 'About', href: '/about'},
     { title: 'Projects', href: '/projects'}
   ]
 

@@ -3,8 +3,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-export default function Arcball({ scroll, enabled }) {
-  
+export default function ArcballCamera({ scroll, enabled }) {
 
   const cameraRef = useRef()
   const origin = new THREE.Vector3(0,0,0)
