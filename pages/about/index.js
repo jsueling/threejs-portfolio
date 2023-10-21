@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import useIntersection from '../../hooks/useIntersection'
+import BackToTop from '../../components/BackToTop'
 
 export default function About() {
   useIntersection()
@@ -28,6 +29,7 @@ export default function About() {
           </p>
         </div>
       </div>
+      <BackToTop />
     </div>
   )
 }

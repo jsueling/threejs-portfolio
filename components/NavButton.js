@@ -1,6 +1,6 @@
 export default function NavButton({ children }) {
   return (
-    <div className='pointer-events-auto navButton'>
+    <div className='navButton'>
       {children}
     </div>
   )
