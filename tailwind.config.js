@@ -16,12 +16,12 @@ module.exports = {
           '100%': { opacity: '1' },
         },
         fadeInUpAbs: {
-          '0%': { opacity: '0', transform: 'translateY(1%)' },
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1' },
         },
         fadeOutDownAbs: {
           '0%': { opacity: '1' },
-          '100%': { opacity: '0', transform: 'translateY(1%)' },
+          '100%': { opacity: '0', transform: 'translateY(10px)' },
         },
         fadeInLeftMargin: {
           '0%': { opacity: '0', marginLeft: 0 },
