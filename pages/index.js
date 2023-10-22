@@ -10,11 +10,12 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <div className='h-[60vh] flex items-center'>
+      <div className='mt-[10vh] sm:mt-0 h-[60vh] flex flex-col sm:justify-center'>
         <div>
-          <h1 className='text-xl mb-5 opacity-0 animate-[fadeInUpAbs.5s_ease-in-out_0.5s_1_normal_forwards]'>Hi,</h1>
-          <h1 className='text-2xl opacity-0 animate-[fadeInUpAbs.5s_ease-in-out_0.8s_1_normal_forwards]'>My name is James</h1>
+          <h1 className='mb-5 opacity-0 animate-[fadeInUpAbs.5s_ease-in-out_0.5s_1_normal_forwards] text-sm xl:text-xl'>Hi,</h1>
+          <h1 className='opacity-0 animate-[fadeInUpAbs.5s_ease-in-out_0.8s_1_normal_forwards] xl:text-2xl'>My name is James</h1>
         </div>
+        <div className='hidden sm:block w-full h-[10vh]'></div>
       </div>
     </div>
   )
