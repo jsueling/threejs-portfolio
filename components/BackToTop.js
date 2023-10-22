@@ -11,7 +11,7 @@ export default function BackToTop() {
 
   return (
     <div className='dark:text-white'>
-      <button className='mb-10 navButton relative' onClick={scrollTop} >Back to Top</button>
+      <button className='mb-10 navButton relative pointer-events-auto' onClick={scrollTop} >Back to Top</button>
     </div>
   )
 }
