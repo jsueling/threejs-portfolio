@@ -25,19 +25,20 @@ export default function Layout({ children }) {
   }, [])
 
   const menuItems = [
-    { title: 'Home', href: '/'},
-    { title: 'About', href: '/about'},
-    { title: 'Projects', href: '/projects'}
+    { title: 'Home', href: '/' },
+    { title: 'About', href: '/about' },
+    { title: 'Projects', href: '/projects' },
+    { title: 'Explore', href: '/explore' }
   ]
 
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
-      <ThreeCanvas
-        mobileMenuOpen={mobileMenuOpen}
-        scroll={scroll}
-        dark={dark}
-      />
+        <ThreeCanvas
+          mobileMenuOpen={mobileMenuOpen}
+          scroll={scroll}
+          dark={dark}
+        />
       </div>
       <div id='content' className='absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
         <NavBar

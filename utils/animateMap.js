@@ -7,5 +7,6 @@ export const animateMap = {
     0: 'animate-[fadeInBounceAbs_.5s_ease-in-out_0.1s_1_normal_forwards]',
     1: 'animate-[fadeInBounceAbs_.5s_ease-in-out_0.3s_1_normal_forwards]',
     2: 'animate-[fadeInBounceAbs_.5s_ease-in-out_0.5s_1_normal_forwards]',
+    3: 'animate-[fadeInBounceAbs_.5s_ease-in-out_0.7s_1_normal_forwards]',
   }
 }
