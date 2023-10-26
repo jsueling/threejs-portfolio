@@ -1,8 +1,10 @@
 import Head from 'next/head'
 
 import useIntersection from '../hooks/useIntersection'
+import ThreeLayout from '../components/layouts/ThreeLayout'
+import NavNestedLayout from '../components/layouts/NavNestedLayout'
 
-export default function Home() {
+function Home() {
   useIntersection()
 
   return (
@@ -20,3 +22,15 @@ export default function Home() {
     </div>
   )
 }
+
+Home.getLayout = (page) => {
+  return (
+    <ThreeLayout>
+      <NavNestedLayout>
+        {page}
+      </NavNestedLayout>
+    </ThreeLayout>
+  )
+}
+
+export default Home

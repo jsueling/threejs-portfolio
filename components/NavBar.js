@@ -4,14 +4,17 @@ import DarkMode from './DarkMode'
 import NavButton from './NavButton'
 import Hamburger from './Hamburger'
 
-export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark, setDark }) {
+export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, setDark }) {
 
   return (
     <div className='mb-10 flex flex-start col-span-full'>
-      <Hamburger mobileMenuOpen={mobileMenuOpen} setMobileMenu={setMobileMenu}/>
+      <Hamburger
+        mobileMenu={mobileMenu}
+        setMobileMenu={setMobileMenu}
+      />
       <div className='hidden md:block'>
         <nav className='flex flex-start'>
-          {!mobileMenuOpen &&
+          {!mobileMenu &&
             <>
               {menuItems.map((item) =>
                 <div
@@ -29,7 +32,11 @@ export default function Navbar({ menuItems, mobileMenuOpen, setMobileMenu, dark,
           }
         </nav>
       </div>
-      <DarkMode mobileMenuOpen={mobileMenuOpen} dark={dark} setDark={setDark} />
+      <DarkMode
+        mobileMenu={mobileMenu}
+        dark={dark}
+        setDark={setDark}
+      />
     </div>
   )
 }

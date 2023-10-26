@@ -1,10 +1,10 @@
 import MenuIcon from './MenuIcon'
 import CloseIcon from './CloseIcon'
 
-export default function Hamburger({ mobileMenuOpen, setMobileMenu }) {
+export default function Hamburger({ mobileMenu, setMobileMenu }) {
   return (
     <button className='dark:text-white pointer-events-auto' onClick={() => setMobileMenu(prev => !prev)}>
-      {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+      {mobileMenu ? <CloseIcon /> : <MenuIcon />}
     </button>
   )
 }

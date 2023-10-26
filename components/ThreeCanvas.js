@@ -12,17 +12,17 @@ import Stars from './threeJS/Stars'
 import Planet from "./threeJS/Planet"
 import Effects from "./threeJS/Effects";
 
-export default function ThreeCanvas({ dark, scroll, mobileMenuOpen }) {
+export default function ThreeCanvas({ dark, scroll, mobileMenu }) {
   const homePosition = [0, 0, -100]
   return (
     <Canvas>
-      <color attach="background" args={[dark ? "black" : 'grey' ]}/>
+      <color attach="background" args={[dark ? "black" : 'grey' ]} />
       <Light
         homePosition={homePosition}
       />
       <ArcballCamera
         scroll={scroll}
-        enabled={mobileMenuOpen}
+        enabled={mobileMenu}
       />
       <Planet
         dark={dark}

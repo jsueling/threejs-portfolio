@@ -2,8 +2,10 @@ import Head from 'next/head'
 
 import useIntersection from '../../hooks/useIntersection'
 import BackToTop from '../../components/BackToTop'
+import ThreeLayout from '../../components/layouts/ThreeLayout'
+import NavNestedLayout from '../../components/layouts/NavNestedLayout'
 
-export default function Projects() {
+function Projects() {
   useIntersection()
 
   return (
@@ -33,3 +35,15 @@ export default function Projects() {
     </div>
   )
 }
+
+Projects.getLayout = (page) => {
+  return (
+    <ThreeLayout>
+      <NavNestedLayout>
+        {page}
+      </NavNestedLayout>
+    </ThreeLayout>
+  )
+}
+
+export default Projects
