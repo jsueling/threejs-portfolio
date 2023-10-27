@@ -21,7 +21,7 @@ export default function DarkMode({ mobileMenu, dark, setDark }) {
     <div className='sunMoon ml-2 flex'>
       <button
         className='pointer-events-auto transition-all duration-[600ms] ease-in-out hover:rotate-[360deg] dark:text-white'
-        onClick={() => setDark(!dark)}
+        onClick={() => setDark(prev => !prev)}
       >
         {dark ? <Sun /> : <Moon />}
       </button>

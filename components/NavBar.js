@@ -4,7 +4,7 @@ import DarkMode from './DarkMode'
 import NavButton from './NavButton'
 import Hamburger from './Hamburger'
 
-export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, setDark }) {
+export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, setDark, setExplore }) {
 
   return (
     <div className='mb-10 flex flex-start col-span-full'>
@@ -27,7 +27,12 @@ export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, set
                     </Link>
                   </NavButton>
                 </div>
-                )}
+              )}
+              <div className='dark:text-white animate-navBar relative mr-16 lg:mr-28 xl:mr-32 cursor-pointer'>
+                <a onClick={() => setExplore(true)} className='pointer-events-auto navButton'>
+                  Explore
+                </a>
+              </div>
             </>
           }
         </nav>
