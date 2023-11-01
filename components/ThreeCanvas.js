@@ -20,7 +20,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
       <Light
         homePosition={homePosition}
       />
-      {explore && <ArcballControls />}
+      <ArcballControls enabled={explore} />
       <Planet
         dark={dark}
         homePosition={homePosition}

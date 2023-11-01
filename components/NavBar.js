@@ -28,7 +28,7 @@ export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, set
                   </NavButton>
                 </div>
               )}
-              <div className='dark:text-white animate-navBar relative mr-16 lg:mr-28 xl:mr-32 cursor-pointer'>
+              <div className='dark:text-white animate-navBar relative mr-12 lg:mr-16 xl:mr-24 cursor-pointer'>
                 <a onClick={() => setExplore(true)} className='pointer-events-auto navButton'>
                   Explore
                 </a>

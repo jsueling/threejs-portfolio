@@ -43,39 +43,39 @@ export default function ThreeLayout({ children }) {
         />
       </div>
       <div id='content' className='absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
-      {!explore &&
-        <NavBar
-          menuItems={menuItems}
-          mobileMenu={mobileMenu}
-          setMobileMenu={setMobileMenu}
-          dark={dark}
-          setDark={setDark}
-          setExplore={setExplore}
-        />
-      }
-      {!mobileMenu && !explore &&
-        <div className='col-span-full'>
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </div>
-      }
-      {mobileMenu &&
-        <MobileMenu
-          menuItems={menuItems}
-          setMobileMenu={setMobileMenu}
-          setExplore={setExplore}
-        />
-      }
-      {explore &&
-        <div
-          onClick={() => setExplore(prev => !prev)}
-          className='dark:text-white cursor-pointer pointer-events-auto'
-        >
-          <CloseIcon />
-        </div>
-      }
+        {!explore &&
+          <NavBar
+            menuItems={menuItems}
+            mobileMenu={mobileMenu}
+            setMobileMenu={setMobileMenu}
+            dark={dark}
+            setDark={setDark}
+            setExplore={setExplore}
+          />
+        }
+        {!mobileMenu && !explore &&
+          <div className='col-span-full'>
+            <main>
+              {children}
+            </main>
+            <Footer />
+          </div>
+        }
+        {mobileMenu &&
+          <MobileMenu
+            menuItems={menuItems}
+            setMobileMenu={setMobileMenu}
+            setExplore={setExplore}
+          />
+        }
+        {explore &&
+          <div
+            onClick={() => setExplore(prev => !prev)}
+            className='dark:text-white cursor-pointer pointer-events-auto'
+          >
+            <CloseIcon />
+          </div>
+        }
       </div>
     </div>
   )
