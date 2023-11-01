@@ -9,7 +9,7 @@ import handleResize from '../utils/handleResize'
 import handleScroll from '../utils/handleScroll'
 import CloseIcon from './CloseIcon'
 
-export default function ThreeLayout({ children }) {
+export default function Layout({ children }) {
 
   const [mobileMenu, setMobileMenu] = useState(false)
   const [explore, setExplore] = useState(false)
