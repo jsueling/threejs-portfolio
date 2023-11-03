@@ -1,5 +1,7 @@
 import { EffectComposer, Pixelation, Bloom, Noise, Vignette, DepthOfField, GodRays } from '@react-three/postprocessing'
 import { BlendFunction } from "postprocessing";
+import { useFrame } from '@react-three/fiber';
+import { useState } from 'react';
 
 // import AsciiRenderer from './AsciiRenderer'
 
@@ -7,6 +9,7 @@ import { BlendFunction } from "postprocessing";
 // Depth of Field https://codesandbox.io/s/bst0cy?file=/src/App.js
 // Effect Composer https://docs.pmnd.rs/react-postprocessing/effect-composer
 // fog
+// sparks https://codesandbox.io/s/sbf2i?file=/src/Effects.js
 
 // God rays
 // https://codesandbox.io/s/yggpw5?file=/src/App.js
@@ -14,6 +17,11 @@ import { BlendFunction } from "postprocessing";
 // https://github.com/pmndrs/react-postprocessing/blob/2d7edcc2ef7cc2571a86f30ede2b9ee25b38987e/examples/src/demos/TakeControl/Effects.tsx
 
 export default function Effects({ dark }) {
+  const [intensity, setIntensity] = useState()
+
+  useFrame((_, delta) => {
+    setIntensity(Math.sin(Date.now()))
+  })
 
   return (
     <EffectComposer
@@ -21,7 +29,7 @@ export default function Effects({ dark }) {
     >
       {dark ?
       <Bloom
-        intensity={dark ? 10 : 0}
+        intensity={intensity}
         luminanceThreshold={0}
         luminanceSmoothing={0.0}
         mipmapBlur={true}
