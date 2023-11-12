@@ -9,6 +9,7 @@ import handleResize from '../utils/handleResize'
 import handleScroll from '../utils/handleScroll'
 import CloseIcon from './CloseIcon'
 import DarkMode from './DarkMode'
+import { animateMap } from '../utils/animateMap'
 
 export default function Layout({ children }) {
 
@@ -34,6 +35,12 @@ export default function Layout({ children }) {
     }
   }, [])
 
+  const exploreCommands = [
+    "Hold left click to rotate",
+    "Hold right click to drag",
+    "Scroll to zoom",
+  ]
+
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
@@ -55,12 +62,12 @@ export default function Layout({ children }) {
           />
         }
         {!mobileMenu && !explore &&
-          <div className='col-span-full'>
+          <>
             <main>
               {children}
             </main>
             <Footer />
-          </div>
+          </>
         }
         {mobileMenu &&
           <MobileMenu
@@ -70,19 +77,32 @@ export default function Layout({ children }) {
           />
         }
         {explore &&
-          <div className='flex'>
-            <div
-              onClick={() => setExplore(prev => !prev)}
-              className='dark:text-white cursor-pointer pointer-events-auto'
-            >
-              <CloseIcon />
+          <>
+            <div className='flex'>
+              <div
+                onClick={() => setExplore(prev => !prev)}
+                className='dark:text-white cursor-pointer pointer-events-auto'
+              >
+                <CloseIcon />
+              </div>
+              <DarkMode
+                mobileMenu={true} // when true causes darkmode to animate in from the right
+                dark={dark}
+                setDark={setDark}
+              />
             </div>
-            <DarkMode
-              mobileMenu={true} // when true causes darkmode to animate in from the right
-              dark={dark}
-              setDark={setDark}
-            />
-          </div>
+            <div className='dark:text-white pointer-events-none mt-[10vh] sm:mt-0 h-[60vh] flex flex-col sm:justify-center'>
+              {exploreCommands.map((str, i) =>
+                <div 
+                  className={`${animateMap.staggerUp[i]} mb-2.5 opacity-0 dark:text-white`}
+                  key={str}
+                >
+                  {str}
+                </div>
+                )}
+              <div className='hidden sm:block w-full h-[10vh]'></div>
+            </div>
+          </>
         }
       </div>
     </div>
