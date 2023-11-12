@@ -8,6 +8,7 @@ import useDarkMode from '../hooks/useDarkMode'
 import handleResize from '../utils/handleResize'
 import handleScroll from '../utils/handleScroll'
 import CloseIcon from './CloseIcon'
+import DarkMode from './DarkMode'
 
 export default function Layout({ children }) {
 
@@ -69,11 +70,18 @@ export default function Layout({ children }) {
           />
         }
         {explore &&
-          <div
-            onClick={() => setExplore(prev => !prev)}
-            className='dark:text-white cursor-pointer pointer-events-auto'
-          >
-            <CloseIcon />
+          <div className='flex'>
+            <div
+              onClick={() => setExplore(prev => !prev)}
+              className='dark:text-white cursor-pointer pointer-events-auto'
+            >
+              <CloseIcon />
+            </div>
+            <DarkMode
+              mobileMenu={true} // when true causes darkmode to animate in from the right
+              dark={dark}
+              setDark={setDark}
+            />
           </div>
         }
       </div>
