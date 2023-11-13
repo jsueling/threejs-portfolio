@@ -19,8 +19,11 @@ import { useState } from 'react';
 export default function Effects({ dark }) {
   const [intensity, setIntensity] = useState()
 
+  const intensitySpeed = 0.00015
+
   useFrame((_, delta) => {
-    setIntensity(Math.sin(Date.now()))
+    // Math.sin(Date.now() * Math.PI ) becomes 0 every millisecond following sin wave, bouncing between -1 and 1
+    setIntensity(Math.sin(Date.now() * intensitySpeed * Math.PI) * 20 + 20)
   })
 
   return (
@@ -46,9 +49,9 @@ export default function Effects({ dark }) {
             bokehScale={4} // bokeh size
             blendFunction={BlendFunction.ADD}
           />
-        {/* <Pixelation granularity={10} /> */}
       </>
       }
+      {/* <Pixelation granularity={5} /> */}
       {/* <AsciiRenderer invert/> */}
     </EffectComposer>
   )

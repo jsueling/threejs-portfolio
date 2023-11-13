@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useMemo } from 'react'
 import { Points, PointMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { Vector3, Spherical } from "three"
@@ -18,13 +18,14 @@ const genStar = r => {
 export default function Stars({ dark, frequency, homePosition }) {
 
   const ref = useRef()
-  const [sphere] = useState(() => {
+  const sphere = useMemo(() => {
     let arr = []
     for (let i=0; i < frequency; i++) {
       arr.push(...genStar(50).toArray())
     }
     return new Float32Array(arr)
-  })
+  }, [frequency])
+
   useFrame((_, delta) => {
     ref.current.rotation.x += delta / 10
     ref.current.rotation.y += delta / 30
@@ -40,7 +41,7 @@ export default function Stars({ dark, frequency, homePosition }) {
       <PointMaterial
         transparent
         color={dark ? 'white' : 'black'}
-        size={dark ? 0.4 : 1}
+        size={dark ? 0.1 : 0.3}
         depthWrite={false} // https://threejs.org/docs/#api/en/materials/Material.depthWrite
       />
     </Points>

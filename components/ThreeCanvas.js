@@ -21,6 +21,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
       <color attach="background" args={[dark ? "black" : 'grey' ]} />
       <Light
         homePosition={homePosition}
+        dark={dark}
       />
       <CameraControls
         scroll={scroll}
@@ -33,7 +34,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
         homePosition={homePosition}
       />
       <Stars
-        frequency={100}
+        frequency={dark ? 100: 2000}
         dark={dark}
         homePosition={homePosition}
       />
