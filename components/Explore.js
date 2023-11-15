@@ -28,7 +28,7 @@ export default function Explore({ setExplore, dark, setDark }) {
       <div className='dark:text-white pointer-events-none mt-[10vh] sm:mt-0 h-[60vh] flex flex-col sm:justify-center'>
         {exploreCommands.map((str, i) =>
           <div 
-            className={`${animateMap.staggerUp[i]} mb-2.5 opacity-0 dark:text-white`}
+            className={`${animateMap.staggerUp[i]} font-light mb-2.5 opacity-0 dark:text-white`}
             key={str}
           >
             {str}

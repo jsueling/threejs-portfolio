@@ -34,7 +34,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
         homePosition={homePosition}
       />
       <Stars
-        frequency={dark ? 100: 2000}
+        frequency={dark ? 100: 1000}
         dark={dark}
         homePosition={homePosition}
       />
