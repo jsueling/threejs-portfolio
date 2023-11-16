@@ -16,7 +16,7 @@ export default function Light({ dark, homePosition }) {
 
   return (
     <>
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={8000} />
       <group
         ref={group}
         position={homePosition}
