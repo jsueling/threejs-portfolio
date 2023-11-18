@@ -41,14 +41,14 @@ export default function Effects({ dark }) {
       <>
         {/* {material && <GodRays sun={material} exposure={0.34} decay={0.8} blur />} */}
         {/* <Noise premultiply blendFunction={BlendFunction.REFLECT} /> */}
-        {/* <Vignette eskil={true} offset={1} darkness={1} /> */}
+        <Vignette
+          eskil={true}
+          offset={2}
+          darkness={0.2}
+        />
         <DepthOfField
-            // focusTarget={[200,200,200]} // where to focus
-            focalLength={60} // focal length
-            focusDistance={100}
-            bokehScale={4} // bokeh size
-            blendFunction={BlendFunction.ADD}
-          />
+          bokehScale={5} // bokeh size
+        />
       </>
       }
       {/* <Pixelation granularity={5} /> */}

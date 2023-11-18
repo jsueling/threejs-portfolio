@@ -23,7 +23,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
 
   function BackgroundColour() { // https://github.com/pmndrs/maath/tree/main#easing
     useFrame((state, delta) => {
-      easing.dampC(state.scene.background, dark ? 'black' : 'grey', 0.1, delta)
+      easing.dampC(state.scene.background, dark ? 'black' : 'white', 0.1, delta)
     })
   }
 
@@ -45,7 +45,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
         homePosition={homePosition}
       />
       <Stars
-        frequency={100}
+        frequency={dark ? 100 : 500}
         dark={dark}
         homePosition={homePosition}
       />

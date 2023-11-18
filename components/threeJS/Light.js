@@ -27,7 +27,7 @@ export default function Light({ dark, homePosition }) {
           distance={20}
           angle={Math.PI * 0.25}
           // https://discourse.threejs.org/t/updates-to-lighting-in-three-js-r155/53733 increase light intensity for the same effect
-          intensity={dark ? 8000 : 16000}
+          intensity={dark ? 8000 : 50000}
           penumbra={1.0}
           target={group.current}
         />

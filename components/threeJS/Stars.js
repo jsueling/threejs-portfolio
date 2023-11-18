@@ -20,8 +20,9 @@ export default function Stars({ dark, frequency, homePosition }) {
   const ref = useRef()
   const sphere = useMemo(() => {
     let arr = []
+    let sphereRadius = 50
     for (let i=0; i < frequency; i++) {
-      arr.push(...genStar(50).toArray())
+      arr.push(...genStar(sphereRadius).toArray())
     }
     return new Float32Array(arr)
   }, [frequency])
@@ -41,7 +42,7 @@ export default function Stars({ dark, frequency, homePosition }) {
       <PointMaterial
         transparent
         color={dark ? 'white' : 'black'}
-        size={dark ? 0.1 : 0.6}
+        size={dark ? 0.1 : 1.5}
         depthWrite={false} // https://threejs.org/docs/#api/en/materials/Material.depthWrite
       />
     </Points>
