@@ -1,10 +1,10 @@
-import {  ArcballControls } from '@react-three/drei'
+import {  CameraControls } from '@react-three/drei'
 import { useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useRouter } from 'next/router';
 import * as THREE from 'three'
 
-export default function CameraControls({ scroll, enabled, homePosition, projectPosition }) {
+export default function Camera({ scroll, enabled, homePosition, projectPosition }) {
   const { pathname } = useRouter()
   const origin = new THREE.Vector3(0,0,0)
   const homeVector = new THREE.Vector3(...homePosition)
@@ -35,7 +35,7 @@ export default function CameraControls({ scroll, enabled, homePosition, projectP
   })
 
   return (
-    <ArcballControls
+    <CameraControls
       enabled={enabled}
     />
   )

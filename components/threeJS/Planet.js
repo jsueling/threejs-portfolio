@@ -1,4 +1,4 @@
-export default function Planet({ dark, homePosition }) {
+export default function Planet({ homePosition }) {
   return (
     <mesh position={homePosition}>
       <sphereGeometry args={[10, 64, 32]} />

@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber"
 import { easing } from 'maath'
 
-import CameraControls from "./threeJS/CameraControls"
+import Camera from "./threeJS/Camera"
 
 // monitors https://codesandbox.io/s/bst0cy?file=/src/App.js
 // image gallery https://codesandbox.io/s/lx2h8?file=/src/App.js
@@ -16,26 +16,28 @@ import Light from './threeJS/Light'
 import Stars from './threeJS/Stars'
 import Planet from "./threeJS/Planet"
 import Effects from "./threeJS/Effects";
+import Icosahedron from "./threeJS/Icosahedron"
 
 export default function ThreeCanvas({ dark, scroll, explore }) {
   const homePosition = [0, 0, -100]
   const projectPosition = [0, 0, 100]
 
-  function BackgroundColour() { // https://github.com/pmndrs/maath/tree/main#easing
+  function BgColourOscillate() { // https://github.com/pmndrs/maath/tree/main#easing
     useFrame((state, delta) => {
-      easing.dampC(state.scene.background, dark ? 'black' : 'white', 0.1, delta)
+      easing.dampC(state.scene.background, dark ? 'black' : 'white', 0.4, delta)
     })
   }
 
   return (
     <Canvas>
-      <BackgroundColour />
       <color attach="background" args={['white']} />
+      <BgColourOscillate />
+      {/* {!dark && <fog attach="fog" args={["white", 300, 500]} />} */}
       <Light
         homePosition={homePosition}
         dark={dark}
       />
-      <CameraControls
+      <Camera
         scroll={scroll}
         enabled={explore}
         homePosition={homePosition}
@@ -45,14 +47,14 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
         homePosition={homePosition}
       />
       <Stars
-        frequency={dark ? 100 : 500}
+        frequency={100}
         dark={dark}
         homePosition={homePosition}
       />
-      <mesh position={projectPosition}>
-        <sphereGeometry attach='geometry' args={[10, 64, 32]} />
-        <meshBasicMaterial attach='material' color='red' />
-      </mesh>
+      <Icosahedron
+        dark={dark}
+        projectPosition={projectPosition}
+      />
       <Effects
         dark={dark}
       />

@@ -33,6 +33,11 @@ export default function Layout({ children }) {
     }
   }, [])
 
+  useEffect(() => {
+    const canvasDom = document.querySelector('canvas')
+    explore ? canvasDom.classList.add('cursor-grab') : canvasDom.classList.remove('cursor-grab')
+  }, [explore])
+
   return (
     <div className='selection:bg-slate-600 selection:text-white'>
       <div className='fixed h-full w-full'>
