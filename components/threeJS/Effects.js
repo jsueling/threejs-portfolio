@@ -5,13 +5,11 @@ import { useState } from 'react';
 
 // import AsciiRenderer from './AsciiRenderer'
 
-// inspiration: https://docs.pmnd.rs/react-three-fiber/getting-started/examples
 // Depth of Field https://codesandbox.io/s/bst0cy?file=/src/App.js
 // Effect Composer https://docs.pmnd.rs/react-postprocessing/effect-composer
-// fog
-// sparks https://codesandbox.io/s/sbf2i?file=/src/Effects.js
 
 // God rays
+// https://codesandbox.io/s/yggpw5?file=/src/App.js:243-250
 // https://codesandbox.io/s/yggpw5?file=/src/App.js
 // https://codesandbox.io/s/postprocessing-godrays-i8vkz?file=/src/index.js
 // https://github.com/pmndrs/react-postprocessing/blob/2d7edcc2ef7cc2571a86f30ede2b9ee25b38987e/examples/src/demos/TakeControl/Effects.tsx
@@ -23,7 +21,7 @@ export default function Effects({ dark }) {
 
   useFrame((_, delta) => {
     // Math.sin(Date.now() * Math.PI ) becomes 0 every millisecond following sin wave, bouncing between -1 and 1
-    setIntensity(Math.sin(Date.now() * intensitySpeed * Math.PI) * 20 + 20)
+    setIntensity(Math.sin(Date.now() * intensitySpeed * Math.PI) * 10 + 10)
   })
 
   return (
@@ -43,8 +41,8 @@ export default function Effects({ dark }) {
         {/* <Noise premultiply blendFunction={BlendFunction.REFLECT} /> */}
         <Vignette
           eskil={true}
-          offset={2}
-          darkness={0.2}
+          offset={1.5}
+          darkness={0.5}
         />
         <DepthOfField
           bokehScale={5} // bokeh size

@@ -3,13 +3,10 @@ import { easing } from 'maath'
 
 import Camera from "./threeJS/Camera"
 
+// inspiration: https://docs.pmnd.rs/react-three-fiber/getting-started/examples
 // monitors https://codesandbox.io/s/bst0cy?file=/src/App.js
 // image gallery https://codesandbox.io/s/lx2h8?file=/src/App.js
-
-// inspiration: https://docs.pmnd.rs/react-three-fiber/getting-started/examples
-// Depth of Field https://codesandbox.io/s/bst0cy?file=/src/App.js
-// Effect Composer https://docs.pmnd.rs/react-postprocessing/effect-composer
-// God ray https://codesandbox.io/s/yggpw5?file=/src/App.js:243-250
+// sparks https://codesandbox.io/s/sbf2i?file=/src/Effects.js + https://github.com/spite/THREE.MeshLine#declarative-use
 // fog
 
 import Light from './threeJS/Light'
@@ -24,7 +21,7 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
 
   function BgColourOscillate() { // https://github.com/pmndrs/maath/tree/main#easing
     useFrame((state, delta) => {
-      easing.dampC(state.scene.background, dark ? 'black' : 'white', 0.4, delta)
+      easing.dampC(state.scene.background, dark ? 'black' : 'white', 0.2, delta)
     })
   }
 

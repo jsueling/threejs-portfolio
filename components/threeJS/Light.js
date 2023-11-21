@@ -8,15 +8,14 @@ export default function Light({ dark, homePosition }) {
   const group = useRef()
   const orbitLight = useRef()
   // useHelper(orbitLight, SpotLightHelper, 'cyan')
-  // useHelper(orbitLight, SpotLightHelper, 'cyan')
 
   useFrame((state, delta) => {
-    group.current.rotation.x += 0.005
+    group.current.rotation.x += delta * 0.1
   })
 
   return (
     <>
-      <ambientLight intensity={8000} />
+      <ambientLight intensity={dark ? 0 : 1} />
       <group
         ref={group}
         position={homePosition}
@@ -27,7 +26,7 @@ export default function Light({ dark, homePosition }) {
           distance={20}
           angle={Math.PI * 0.25}
           // https://discourse.threejs.org/t/updates-to-lighting-in-three-js-r155/53733 increase light intensity for the same effect
-          intensity={dark ? 8000 : 50000}
+          intensity={dark ? 400 : 3000}
           penumbra={1.0}
           target={group.current}
         />

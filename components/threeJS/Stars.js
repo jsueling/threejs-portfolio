@@ -28,8 +28,8 @@ export default function Stars({ dark, frequency, homePosition }) {
   }, [frequency, dark])
 
   useFrame((_, delta) => {
-    ref.current.rotation.x += delta / 10
-    ref.current.rotation.y += delta / 30
+    ref.current.rotation.x += delta * 0.01
+    ref.current.rotation.y += delta * 0.03
   })
   return (
     <Points
