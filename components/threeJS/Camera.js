@@ -2,18 +2,18 @@ import {  CameraControls } from '@react-three/drei'
 import { useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useRouter } from 'next/router';
-import * as THREE from 'three'
+import { Vector3 } from 'three';
+import { dampE } from 'maath/easing'
 
 export default function Camera({ scroll, enabled, homePosition, projectPosition }) {
   const { pathname } = useRouter()
-  const origin = new THREE.Vector3(0,0,0)
-  const homeVector = new THREE.Vector3(...homePosition)
-  const projectVector = new THREE.Vector3(...projectPosition)
+  const origin = new Vector3(0,0,0)
+  const homeVector = new Vector3(...homePosition)
 
   // credits to: https://github.com/pmndrs/react-three-fiber/discussions/807#discussioncomment-129132
-  const [vectorLookAt, _] = useState(() => new THREE.Vector3())
+  const [vectorLookAt, _] = useState(() => new Vector3())
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (!enabled) {
       const angle = Math.PI * 0.5 - scroll * Math.PI * 0.5
       const distance = 20
@@ -23,12 +23,13 @@ export default function Camera({ scroll, enabled, homePosition, projectPosition 
           state.camera.lookAt(vectorLookAt.lerp(homeVector, 0.01))
           break
         case '/about':
-          state.camera.position.lerp(new THREE.Vector3(homePosition[0] + distance * Math.sin(angle), homePosition[1], homePosition[2] + distance * Math.cos(angle)), 0.01)
+          state.camera.position.lerp(new Vector3(homePosition[0] + distance * Math.sin(angle), homePosition[1], homePosition[2] + distance * Math.cos(angle)), 0.01)
           state.camera.lookAt(vectorLookAt.lerp(homeVector, 0.01))
           break
         case '/projects':
-          state.camera.position.lerp(new THREE.Vector3(projectPosition[0] + distance * Math.sin(angle), projectPosition[1], projectPosition[2] + distance * Math.cos(angle)), 0.01)
-          state.camera.lookAt(vectorLookAt.lerp(projectVector, 0.01))
+          state.camera.position.lerp(new Vector3(projectPosition[0] + distance * Math.sin(angle), projectPosition[1], projectPosition[2] + distance * Math.cos(angle)), 0.01)
+          // https://github.com/pmndrs/maath/blob/main/README.md#easing
+          dampE(state.camera.rotation, [Math.PI * 0.25 * (1 - scroll) - Math.PI * 0.125, 0, 0], 3, delta)
           break
       }
     }

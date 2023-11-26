@@ -5,7 +5,7 @@ export default function Icosahedron({ dark, projectPosition }) {
 
   const icosahedron = useRef()
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     icosahedron.current.rotation.z += delta * 0.1
   })
 
