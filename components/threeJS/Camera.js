@@ -29,7 +29,7 @@ export default function Camera({ scroll, enabled, homePosition, projectPosition 
         case '/projects':
           state.camera.position.lerp(new Vector3(projectPosition[0], projectPosition[1], projectPosition[2]), 0.01)
           // https://github.com/pmndrs/maath/blob/main/README.md#easing
-          dampE(state.camera.rotation, [Math.PI * (1 - scroll) - Math.PI * 0.5, 0, 0], 1, delta)
+          dampE(state.camera.rotation, [Math.PI * 0.125 * (1 - scroll) - Math.PI * 0.0625, Math.PI * 0.25, 0], 1, delta)
           break
       }
     }
