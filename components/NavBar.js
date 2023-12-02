@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import DarkMode from './DarkMode'
 import NavButton from './NavButton'
-import Hamburger from './Hamburger'
+import Hamburger from './heroicons/Hamburger'
 
 export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, setDark, setExplore }) {
 

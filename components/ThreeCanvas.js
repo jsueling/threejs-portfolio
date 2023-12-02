@@ -7,7 +7,6 @@ import Camera from "./threeJS/Camera"
 // monitors https://codesandbox.io/s/bst0cy?file=/src/App.js
 // image gallery https://codesandbox.io/s/lx2h8?file=/src/App.js
 // sparks https://codesandbox.io/s/sbf2i?file=/src/Effects.js + https://github.com/spite/THREE.MeshLine#declarative-use
-// fog
 
 import Light from './threeJS/Light'
 import Stars from './threeJS/Stars'
@@ -29,7 +28,6 @@ export default function ThreeCanvas({ dark, scroll, explore }) {
     <Canvas>
       <color attach="background" args={['white']} />
       <BgColourOscillate />
-      {/* {!dark && <fog attach="fog" args={["white", 300, 500]} />} */}
       <Light
         homePosition={homePosition}
         dark={dark}

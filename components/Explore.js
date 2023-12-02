@@ -1,4 +1,4 @@
-import CloseIcon from "./CloseIcon"
+import CloseIcon from "./heroicons/CloseIcon"
 import DarkMode from "./DarkMode"
 import { animateMap } from "../utils/animateMap"
 

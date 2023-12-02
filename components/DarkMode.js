@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-import Sun from './Sun'
-import Moon from './Moon'
+import Sun from './heroicons/Sun'
+import Moon from './heroicons/Moon'
 import { screenIs } from '../utils/screenIs'
 
 export default function DarkMode({ mobileMenu, dark, setDark }) {
