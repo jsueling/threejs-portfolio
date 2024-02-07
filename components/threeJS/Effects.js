@@ -24,14 +24,12 @@ export default function Effects({ dark }) {
           luminanceSmoothing={0.0}
           mipmapBlur={true}
         />
-      : 
-      <>
+      :
         <Vignette
           eskil={true}
           offset={1.5}
           darkness={0.5}
         />
-      </>
       }
     </EffectComposer>
   )

@@ -1,11 +1,13 @@
 import { useRef, useMemo } from 'react'
-import { Points, PointMaterial } from '@react-three/drei'
+import { Points } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { Vector3, Spherical } from "three"
 
+import PulsingPoint from './PulsingPoint'
+
 // Adapted from: https://github.com/pmndrs/drei/blob/master/src/core/Stars.tsx + https://codesandbox.io/s/2csbr1
 
-const genStar = r => {
+const generateSpherePosition = r => {
   return new Vector3().setFromSpherical( // https://threejs.org/docs/#api/en/math/Spherical
     new Spherical(
       r,
@@ -18,33 +20,35 @@ const genStar = r => {
 export default function Stars({ dark, frequency, homePosition }) {
 
   const ref = useRef()
-  const sphere = useMemo(() => {
+
+  const spherePositions = useMemo(() => {
     let arr = []
     let sphereRadius = dark ? 50 : 70
     for (let i=0; i < frequency; i++) {
-      arr.push(...genStar(sphereRadius).toArray())
+      arr.push(new Vector3(...generateSpherePosition(sphereRadius)))
     }
-    return new Float32Array(arr)
+    return arr
   }, [frequency, dark])
 
   useFrame((_, delta) => {
     ref.current.rotation.x += delta * 0.01
     ref.current.rotation.y += delta * 0.03
   })
-  return (
+
+  return ( // 2 ways of using Points API: https://github.com/pmndrs/drei?tab=readme-ov-file#points
     <Points
       ref={ref}
-      positions={sphere}
-      stride={3}
-      frustumCulled={false}
       position={homePosition}
     >
-      <PointMaterial
-        transparent
-        color={dark ? 'white' : 'black'}
-        size={dark ? 0.1 : 1}
-        depthWrite={false} // https://threejs.org/docs/#api/en/materials/Material.depthWrite
-      />
+      {spherePositions.map((position) =>  {
+        return (
+          <PulsingPoint
+            key={position.x}
+            dark={dark}
+            position={position}
+          /> 
+        )
+      })}
     </Points>
   )
 }
