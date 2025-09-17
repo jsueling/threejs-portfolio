@@ -16,13 +16,13 @@ export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, set
         <nav className='flex flex-start'>
           {!mobileMenu &&
             <>
-              {menuItems.map((item) =>
+              {menuItems?.map((item) =>
                 <div
                   key={item.title}
                   className='dark:text-white relative animate-navBar first:ml-16 first:lg:ml-28 first:xl:ml-32 mr-16 lg:mr-28 xl:mr-32 last:mr-14 last:lg:mr-[104px] last:xl:mr-[120px]'
                 >
                   <NavButton>
-                    <Link href={item.href}>
+                    <Link aria-label={item.title} href={item.href}>
                       <a>{item.title}</a>
                     </Link>
                   </NavButton>

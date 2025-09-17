@@ -22,6 +22,7 @@ export default function DarkMode({ mobileMenu, dark, setDark }) {
       <button
         className='pointer-events-auto transition-all duration-[600ms] ease-in-out hover:rotate-[360deg] dark:text-white'
         onClick={() => setDark(prev => !prev)}
+        aria-label="Toggle dark mode"
       >
         {dark ? <Sun /> : <Moon />}
       </button>

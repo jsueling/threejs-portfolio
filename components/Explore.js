@@ -16,6 +16,9 @@ export default function Explore({ setExplore, dark, setDark }) {
         <div
           onClick={() => setExplore(prev => !prev)}
           className='dark:text-white cursor-pointer pointer-events-auto'
+          role="button"
+          tabIndex={0}
+          aria-label="Close"
         >
           <CloseIcon />
         </div>
