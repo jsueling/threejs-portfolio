@@ -17,7 +17,7 @@ const useIntersection = () => {
         })
       }
 
-      const observer = new IntersectionObserver(callback, { threshold: 0.5 })
+      const observer = new IntersectionObserver(callback, { threshold: 0.2 })
 
       const targets = document.querySelectorAll('.animateOnScroll')
       targets.forEach((target) => observer.observe(target))
