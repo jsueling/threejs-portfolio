@@ -80,7 +80,7 @@ jobs:
         with:
           build: ${{ steps.detect-package-manager.outputs.runner }} next build
           start: ${{ steps.detect-package-manager.outputs.runner }} next start
-          wait-on: 'http://localhost:3000'
+          wait-on: ${{ env.CYPRESS_BASE_URL}}
           command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
         env:
           CYPRESS_BASE_URL: http://localhost:3000/threejs-portfolio
