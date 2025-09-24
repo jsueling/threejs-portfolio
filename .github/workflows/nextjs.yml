@@ -73,8 +73,17 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Test
+      - name: Run Jest tests
         run: ${{ steps.detect-package-manager.outputs.runner }} jest
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          build: ${{ steps.detect-package-manager.outputs.runner }} next build
+          start: ${{ steps.detect-package-manager.outputs.runner }} next start
+          wait-on: 'http://localhost:3000'
+          command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
+        env:
+          CYPRESS_BASE_URL: http://localhost:3000/threejs-portfolio
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
