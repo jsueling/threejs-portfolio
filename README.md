@@ -40,9 +40,35 @@ To get a local copy up and running, follow these simple steps.
     ```
     Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Testing
+
+This project uses two primary frameworks for testing:
+
+- **[Jest](https://jestjs.io/)**: For unit and component tests.
+- **[Cypress](https://www.cypress.io/)**: For end-to-end (E2E) tests.
+
+### Running Tests Locally
+
+To run the Jest tests in watch mode:
+```sh
+npm run test
+```
+
+To run Cypress E2E tests, first ensure your development server is running (`npm run dev`). Then, in a separate terminal, you can either open the interactive Test Runner or run the tests headlessly.
+
+To open the interactive Cypress Test Runner:
+```sh
+npm run cy:open
+```
+
+To run all Cypress tests headlessly in the terminal (as done in [.github/workflows/test_and_deploy_next_to_pages.yml](.github/workflows/test_and_deploy_next_to_pages.yml)):
+```sh
+npm run cy:run
+```
+
 ## Deployment
 
-This project is set up for continuous deployment to GitHub Pages using a [GitHub Actions workflow](.github/workflows/nextjs.yml). The workflow is triggered on a push to the `main` branch. It builds the Next.js application, exports it as a static site, and deploys it.
+This project is set up for continuous deployment to GitHub Pages using a customised [GitHub Actions workflow](.github/workflows/test_and_deploy_next_to_pages.yml). The workflow is triggered on a push to the `main` branch. It runs all Jest and Cypress tests, builds the Next.js application, exports it as a static site, and deploys it.
 
 ## Acknowledgements
 

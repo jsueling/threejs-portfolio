@@ -1,18 +1,27 @@
 describe('Page Navigation', () => {
   beforeEach(() => {
-    // The basePath is not applied in dev mode, so we visit the root.
-    // For CI runs, the CYPRESS_BASE_URL will handle the basePath.
     cy.visit('/');
   });
 
-  it('should navigate to the about section when the link is clicked', () => {
-    // 1. Find the link with the text "About"
-    cy.contains('a', 'About').click();
+  it('should navigate to the About page when the link is clicked', () => {
+    cy.contains('nav a', 'About').click();
+    cy.url().should('include', '/about');
+    // Check for a heading on the about page instead of the link
+    cy.get('h1').should('contain', 'About'); 
+  });
 
-    // 2. Check if the URL has been updated with the hash
-    cy.url().should('include', 'about');
+  it('should navigate to the Projects page when the link is clicked', () => {
+    cy.contains('nav a', 'Projects').click();
+    cy.url().should('include', '/projects');
+    cy.get('h1').should('contain', 'Projects');
+  });
 
-    // 3. Check if the "About" section heading is visible
-    cy.contains('a', 'About').should('be.visible');
+  it('should open the Explore overlay when the button is clicked', () => {
+    // The "Explore" button is in the NavBar
+    cy.get('nav').contains('Explore').click();
+    // The Explore component should be visible
+    cy.contains('Hold left click to rotate').should('be.visible');
+    // The NavBar should be hidden
+    cy.get('nav').should('not.exist');
   });
 });
