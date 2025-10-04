@@ -2,7 +2,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-blue?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTEyIDJMMC41IDEybDIuMTggMi4xOEwxMiA0LjU0bDkuMzIgOS42NEwyMy41IDEyIDEyIDJ6bTAgOWwtOC41IDguNzVWMTlIMjAuNVYxOS43NUwxMiAxMXoiLz48L3N2Zz4=)](https://jsueling.github.io/threejs-portfolio)
 
-[![Build Status](https://github.com/jsueling/threejs-portfolio/actions/workflows/nextjs.yml/badge.svg)](https://github.com/jsueling/threejs-portfolio/actions/workflows/nextjs.yml)
+[![Build Status](https://github.com/jsueling/threejs-portfolio/actions/workflows/test_and_deploy_next_to_pages.yml/badge.svg)](https://github.com/jsueling/threejs-portfolio/actions/workflows/test_and_deploy_next_to_pages.yml)
 
 A 3D portfolio application built with [Next.js](https://nextjs.org/) and deployed to GitHub Pages. This project leverages [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) to create a 3D interactive experience in the browser.
 
