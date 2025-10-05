@@ -47,7 +47,7 @@ export default function Layout({ children }) {
           explore={explore}
         />
       </div>
-      <div id='content' className='absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96'>
+      <div id='content' className='absolute pointer-events-none py-20 px-10 sm:px-32 lg:px-64 xl:px-96 min-h-full w-full'>
         {!explore &&
           <NavBar
             menuItems={menuItems}
