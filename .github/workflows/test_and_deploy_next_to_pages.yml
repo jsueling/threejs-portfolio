@@ -53,7 +53,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18.18.2"
+          node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -77,19 +77,21 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Run Jest tests
         run: ${{ steps.detect-package-manager.outputs.runner }} jest
+      - name: Prepare static site for serving
+        run: |
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          mkdir serve_dir
+          mv out serve_dir/threejs-portfolio
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          build: ${{ steps.detect-package-manager.outputs.runner }} next build
-          start: ${{ steps.detect-package-manager.outputs.runner }} next start
+          start: npx serve@latest serve_dir
           wait-on: ${{ env.CYPRESS_BASE_URL}}
           command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
         env:
           CYPRESS_BASE_URL: http://localhost:3000/threejs-portfolio
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:

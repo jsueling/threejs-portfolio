@@ -22,8 +22,11 @@ export default function Navbar({ menuItems, mobileMenu, setMobileMenu, dark, set
                   className='dark:text-white relative animate-navBar first:ml-16 first:lg:ml-28 first:xl:ml-32 mr-16 lg:mr-28 xl:mr-32 last:mr-14 last:lg:mr-[104px] last:xl:mr-[120px]'
                 >
                   <NavButton>
-                    <Link aria-label={item.title} href={item.href}>
-                      <a>{item.title}</a>
+                    <Link
+                      aria-label={item.title}
+                      href={item.href}
+                    >
+                      {item.title}
                     </Link>
                   </NavButton>
                 </div>
