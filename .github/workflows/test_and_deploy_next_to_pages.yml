@@ -77,11 +77,15 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Run Jest tests
         run: ${{ steps.detect-package-manager.outputs.runner }} jest
+      - name: Prepare static site for serving
+        run: |
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          mkdir serve_dir
+          mv out serve_dir/threejs-portfolio
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          build: ${{ steps.detect-package-manager.outputs.runner }} next build
-          start: sh -c 'mkdir serve_dir && mv out serve_dir/threejs-portfolio && npx serve@latest serve_dir'
+          start: npx serve@latest serve_dir
           wait-on: ${{ env.CYPRESS_BASE_URL}}
           command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
         env:
