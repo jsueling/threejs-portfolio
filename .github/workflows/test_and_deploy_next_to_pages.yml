@@ -81,7 +81,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           build: ${{ steps.detect-package-manager.outputs.runner }} next build
-          start: npx serve@latest out
+          start:  mkdir public && mv out public/threejs-portfolio && npx serve@latest public
           wait-on: ${{ env.CYPRESS_BASE_URL}}
           command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
         env:
