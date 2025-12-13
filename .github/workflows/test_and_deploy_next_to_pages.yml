@@ -90,12 +90,10 @@ jobs:
           command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
         env:
           CYPRESS_BASE_URL: http://localhost:3000/threejs-portfolio
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./out
+          path: ./serve_dir/threejs-portfolio
 
   # Deployment job
   deploy:
