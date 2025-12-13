@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react"
 
 const useDarkMode = () => {
-  const [dark, setDark] = useState()
+const [dark, setDark] = useState(() => {
+    // SSR Safety Check
+    if (typeof window === 'undefined') return false;
 
-  // after first render, check first in localStorage, else use prefers-color-scheme
-  useEffect(() => {
-    const storedValue = JSON.parse(window.localStorage.getItem('darkMode'))
-    setDark(
-      typeof storedValue === 'boolean'
-      ? storedValue
-      : window.matchMedia('(prefers-color-scheme: dark)').matches // https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/matches
-    )
-  }, [])
+    try {
+      // LocalStorage Check: Prioritize user preference
+      const item = window.localStorage.getItem('darkMode');
+      if (item) {
+        return JSON.parse(item);
+      }
 
-  // when dark state changes (from the button onClick or from first render useEffect => update localStorage + change body classList 
-  useEffect(() => {
-    if (dark !== undefined) {
-      window.localStorage.setItem('darkMode', JSON.stringify(dark))
-      dark ? window.document.body.classList.add('dark') : window.document.body.classList.remove('dark')
+      // System Preference Check (Safe for Jest/Old Browsers)
+      if (window.matchMedia) {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+    } catch (error) {
+      console.warn('Unable to access localStorage or matchMedia', error);
     }
-  }, [dark])
+
+    // Default Fallback
+    return false; 
+  });
+
+  useEffect(() => {
+
+    window.localStorage.setItem('darkMode', JSON.stringify(dark));
+    if (dark) {
+      window.document.body.classList.add('dark');
+    } else {
+      window.document.body.classList.remove('dark');
+    }
+  }, [dark]);
 
   return [dark, setDark]
 }

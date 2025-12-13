@@ -1,8 +1,9 @@
 describe('Mobile Navigation', () => {
   beforeEach(() => {
     // Set viewport to a mobile size
-    cy.viewport('iphone-6');
+    cy.viewport('iphone-x');
     cy.visit('/');
+    cy.wait(500);
   });
 
   it('should open the mobile menu and navigate to a page', () => {

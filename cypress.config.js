@@ -13,7 +13,8 @@ module.exports = defineConfig({
           
           // Force WebGL to work even on "unsupported" GPUs
           launchOptions.args.push('--ignore-gpu-blocklist');
-          launchOptions.args.push('--use-gl=swiftshader'); 
+          launchOptions.args.push('--use-gl=swiftshader');
+          launchOptions.args.push('--disable-dev-shm-usage');
         }
 
         return launchOptions;
