@@ -6,7 +6,18 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000,
     baseUrl: 'http://localhost:3000/threejs-portfolio',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        if (browser.family === 'chromium' || browser.name === 'electron') {
+          // Enable software rendering (SwiftShader) for WebGL in CI
+          launchOptions.args.push('--enable-unsafe-swiftshader');
+          
+          // Force WebGL to work even on "unsupported" GPUs
+          launchOptions.args.push('--ignore-gpu-blocklist');
+          launchOptions.args.push('--use-gl=swiftshader'); 
+        }
+
+        return launchOptions;
+      });
     },
     // Defaults to 1280x720 viewport size
     // Set a consistent viewport size for all tests
