@@ -10,7 +10,7 @@ describe('Mobile Navigation', () => {
     cy.get('nav').should('not.be.visible');
 
     // Find and click the hamburger icon
-    cy.get('button[aria-label="Open Menu"]').click({ force: true });
+    cy.get('button[aria-label="Open Menu"]').click();
 
     // The mobile menu should now be visible
     cy.contains('a', 'About').should('be.visible');

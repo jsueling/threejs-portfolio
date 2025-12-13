@@ -6,13 +6,13 @@ describe('Dark Mode Toggle', () => {
     cy.get('body').should('not.have.class', 'dark');
 
     // Find and click the dark mode toggle button
-    cy.get('button[aria-label="Toggle dark mode"]').click({ force: true });
+    cy.get('button[aria-label="Toggle dark mode"]').click({force: true});
 
     // Assert that dark mode is enabled
     cy.get('body').should('have.class', 'dark');
 
     // Click again to disable
-    cy.get('button[aria-label="Toggle dark mode"]').click({ force: true });
+    cy.get('button[aria-label="Toggle dark mode"]').click();
     cy.get('body').should('not.have.class', 'dark');
   });
 });
