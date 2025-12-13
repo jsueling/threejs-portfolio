@@ -21,7 +21,7 @@
     "@react-three/postprocessing": "^2.15.11",
     "lodash.debounce": "^4.0.8",
     "maath": "^0.10.4",
-    "next": "15.5.4",
+    "next": ">=15.5.8",
     "postprocessing": "^6.33.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
