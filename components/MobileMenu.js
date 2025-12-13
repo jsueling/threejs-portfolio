@@ -5,7 +5,7 @@ import { animateMap } from '../utils/animateMap'
 export default function MobileMenu ({ menuItems, setExplore, setMobileMenu }) {
 
   return (
-    <div className='pointer-events-auto flex flex-col items-start'>
+    <div className='mobile-menu pointer-events-auto flex flex-col items-start'>
       {menuItems.map((item, index) => 
         <Link
           key={item.title}
