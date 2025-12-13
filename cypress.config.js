@@ -2,6 +2,8 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   e2e: {
+    // Set a higher default command timeout (acommodates slower hardware)
+    defaultCommandTimeout: 10000,
     baseUrl: 'http://localhost:3000/threejs-portfolio',
     setupNodeEvents(on, config) {
       // implement node event listeners here
