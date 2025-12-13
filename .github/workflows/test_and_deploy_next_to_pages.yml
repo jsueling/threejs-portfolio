@@ -87,7 +87,7 @@ jobs:
         with:
           start: npx serve@latest serve_dir
           wait-on: ${{ env.CYPRESS_BASE_URL}}
-          command: ${{ steps.detect-package-manager.outputs.runner }} cypress run
+          command: ${{ steps.detect-package-manager.outputs.runner }} cypress run --browser chrome
         env:
           CYPRESS_BASE_URL: http://localhost:3000/threejs-portfolio
       - name: Upload artifact
